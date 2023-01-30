@@ -6,27 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.prilepskiy.myapplication.R
+import com.prilepskiy.myapplication.databinding.FragmentMainBinding
+import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
+import com.prilepskiy.myapplication.ui.base.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainFragment : Fragment() {
+@AndroidEntryPoint
+class MainFragment : FragmentBaseMVVM<MainViewModel, FragmentMainBinding>() {
+    override val binding: FragmentMainBinding by viewBinding()
+    override val viewModel: MainViewModel by viewModels()
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
-    private lateinit var viewModel: MainViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
 
 }
