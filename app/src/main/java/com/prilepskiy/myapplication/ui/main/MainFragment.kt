@@ -2,6 +2,7 @@ package com.prilepskiy.myapplication.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,15 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment : FragmentBaseMVVM<MainViewModel, FragmentMainBinding>() {
     override val binding: FragmentMainBinding by viewBinding()
     override val viewModel: MainViewModel by viewModels()
+    override fun onView() {
+       // viewModel.testGet()
+    }
 
+    override fun onEach() {
+//        onEach(viewModel.test){
+//            Log.d("TAG99", "onEach:$it ")
+//
+//        }
+    }
 
 }
