@@ -16,8 +16,9 @@ abstract class StepDao: BaseDao<StepEntity>() {
     abstract fun getStepFromTarget(titleTarget:String): Flow<List<StepEntity>>
 
     @Query("SELECT * FROM step_table WHERE title=:title")
-    abstract fun getStep(title:String): Flow<List<StepEntity>>
-
+    abstract fun getStepByTitle(title:String): Flow<List<StepEntity>>
+    @Query("SELECT * FROM step_table WHERE id=:id")
+    abstract fun getStepById(id:Long): Flow<StepEntity>
     @Query("DELETE FROM step_table WHERE title=:title")
     abstract suspend fun deleteStep(title:String)
 
