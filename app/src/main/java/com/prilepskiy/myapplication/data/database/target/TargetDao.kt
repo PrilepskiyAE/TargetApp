@@ -11,7 +11,10 @@ abstract class TargetDao:BaseDao<TargetEntity>() {
     @Query("SELECT * FROM target_table")
     abstract fun getAllTargets(): Flow<List<TargetEntity>>
     @Query("SELECT * FROM target_table WHERE title=:data")
-    abstract fun getTarget(data:String): Flow<List<TargetEntity>>
+    abstract fun getTargetByTitle(data:String): Flow<List<TargetEntity>>
+
+    @Query("SELECT * FROM target_table WHERE id=:id")
+    abstract fun getTargetById(id:Long): Flow<TargetEntity>
 
     @Query("DELETE FROM target_table WHERE title=:data")
     abstract suspend fun deleteTarget(data:String)
