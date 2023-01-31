@@ -16,8 +16,9 @@ abstract class NoteDao : BaseDao<NoteEntity>(){
     abstract fun getNoteFromTarget(titleTarget:String): Flow<List<NoteEntity>>
 
     @Query("SELECT * FROM note_table WHERE title=:title")
-    abstract fun getNote(title:String): Flow<List<NoteEntity>>
-
+    abstract  fun getNoteByTitle(title:String): Flow<List<NoteEntity>>
+    @Query("SELECT * FROM note_table WHERE id=:id")
+    abstract  fun getNoteById(id:Long): Flow<NoteEntity>
     @Query("DELETE FROM note_table WHERE title=:title")
     abstract suspend fun deleteNote(title:String)
 
