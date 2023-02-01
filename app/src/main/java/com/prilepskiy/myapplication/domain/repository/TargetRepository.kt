@@ -7,8 +7,8 @@ import com.prilepskiy.myapplication.domain.model.TargetModel
 import kotlinx.coroutines.flow.Flow
 
 interface TargetRepository {
-    suspend fun addStep(data: TargetModel)
-    suspend fun updateStep(data: TargetModel)
+    suspend fun addTarget(data: TargetModel)
+    suspend fun updateTarget(data: TargetModel)
     suspend fun getAllTargets():Flow<List<TargetModel>>
     suspend fun getTargetByTitle(data:String): Flow<List<TargetModel>>
     suspend fun getTargetById(id:Long): Flow<TargetModel>

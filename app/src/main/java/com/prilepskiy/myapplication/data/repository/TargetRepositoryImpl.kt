@@ -9,11 +9,11 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class TargetRepositoryImpl@Inject constructor(private val db: TargetDataBase): TargetRepository {
-    override suspend fun addStep(data: TargetModel) {
+    override suspend fun addTarget(data: TargetModel) {
         db.targetDao.insert(TargetEntity.from(data))
     }
 
-    override suspend fun updateStep(data: TargetModel) {
+    override suspend fun updateTarget(data: TargetModel) {
         db.targetDao.update(TargetEntity.from(data))
     }
 
