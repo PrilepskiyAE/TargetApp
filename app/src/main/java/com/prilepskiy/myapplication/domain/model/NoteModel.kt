@@ -1,8 +1,11 @@
 package com.prilepskiy.myapplication.domain.model
 
+import android.os.Parcelable
 import com.prilepskiy.myapplication.core.BaseAdapterTypes
 import com.prilepskiy.myapplication.data.database.note.NoteEntity
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class NoteModel (
     override val id: Long,
     val title:String="",
@@ -10,7 +13,7 @@ data class NoteModel (
     val titleTarget:String="",
     val resId:String="",
     val date:String=""
-): BaseAdapterTypes(){
+): BaseAdapterTypes(), Parcelable {
     companion object{
         fun from(data:NoteEntity):NoteModel= with(data){
             NoteModel(

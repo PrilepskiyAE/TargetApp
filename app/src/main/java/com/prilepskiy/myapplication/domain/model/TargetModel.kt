@@ -1,9 +1,11 @@
 package com.prilepskiy.myapplication.domain.model
 
+import android.os.Parcelable
 import com.prilepskiy.myapplication.core.BaseAdapterTypes
-import com.prilepskiy.myapplication.data.database.step.StepEntity
 import com.prilepskiy.myapplication.data.database.target.TargetEntity
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class TargetModel(
     override val id: Long,
     val title: String = "",
@@ -12,7 +14,7 @@ data class TargetModel(
     val date: String = "",
     val resId: String = "",
     val status: Boolean = true
-) : BaseAdapterTypes() {
+) : BaseAdapterTypes() , Parcelable {
     companion object {
         fun from(data: TargetEntity): TargetModel = with(data) {
             TargetModel(
