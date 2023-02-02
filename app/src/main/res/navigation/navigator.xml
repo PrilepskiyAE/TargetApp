@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_targetMainFragment"
-            app:destination="@id/targetMainFragment" />
+            app:destination="@id/targetMainFragment">
+            <argument
+                android:name="ismode"
+                app:argType="boolean"
+                />
+        </action>
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -21,7 +26,12 @@
         android:id="@+id/targetMainFragment"
         android:name="com.prilepskiy.myapplication.ui.targetMain.TargetMainFragment"
         android:label="fragment_target_main"
-        tools:layout="@layout/fragment_target_main" />
+        tools:layout="@layout/fragment_target_main" >
+        <argument
+            android:name="ismode"
+            app:argType="boolean"
+            />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.prilepskiy.myapplication.ui.profile.ProfileFragment"

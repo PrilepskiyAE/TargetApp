@@ -10,12 +10,13 @@ import com.prilepskiy.myapplication.R
 import com.prilepskiy.myapplication.databinding.FragmentNoteInfoBinding
 import com.prilepskiy.myapplication.databinding.FragmentProfileBinding
 import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
+import com.prilepskiy.myapplication.ui.base.FragmentBaseNCMVVM
 import com.prilepskiy.myapplication.ui.base.viewBinding
 import com.prilepskiy.myapplication.ui.noteInfo.NoteInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment  : FragmentBaseMVVM<ProfileViewModel, FragmentProfileBinding>() {
+class ProfileFragment  : FragmentBaseNCMVVM<ProfileViewModel, FragmentProfileBinding>() {
     override val binding: FragmentProfileBinding by viewBinding()
     override val viewModel: ProfileViewModel by viewModels()
 
