@@ -2,4 +2,9 @@
     <string name="app_name">TargetApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="tab_title">
+        <item>Цель</item>
+        <item>Шаги</item>
+        <item>Заметки</item>
+    </string-array>
 </resources>

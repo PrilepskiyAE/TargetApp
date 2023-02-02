@@ -1,32 +1,51 @@
 package com.prilepskiy.myapplication.ui.main
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+
 import androidx.fragment.app.viewModels
-import com.prilepskiy.myapplication.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.prilepskiy.myapplication.databinding.FragmentMainBinding
-import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
+import com.prilepskiy.myapplication.ui.adapter.TargetAdapter
+import com.prilepskiy.myapplication.ui.base.FragmentBaseNCMVVM
 import com.prilepskiy.myapplication.ui.base.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : FragmentBaseMVVM<MainViewModel, FragmentMainBinding>() {
+class MainFragment : FragmentBaseNCMVVM<MainViewModel, FragmentMainBinding>() {
     override val binding: FragmentMainBinding by viewBinding()
     override val viewModel: MainViewModel by viewModels()
-    override fun onView() {
-       // viewModel.testGet()
+    val tAdapter=TargetAdapter {
+        navigateFragment(
+            MainFragmentDirections.actionMainFragmentToTargetMainFragment(
+                true
+            )
+        )
     }
 
+    override fun onView() {
+        setAdapter()
+    }
+    private fun setAdapter() {
+        binding.recyclerViewTarget.apply {
+            context?.let {
+                layoutManager = LinearLayoutManager(it)
+                adapter = tAdapter
+            }
+        }
+
+    }
     override fun onEach() {
-//        onEach(viewModel.test){
-//            Log.d("TAG99", "onEach:$it ")
-//
-//        }
+        onEach(viewModel.targetList){
+            tAdapter.submitList(it)
+
+        }
+    }
+
+    override fun onViewClick() {
+        binding.btAddTarget.setOnClickListener {
+            navigateFragment(MainFragmentDirections.actionMainFragmentToTargetMainFragment(
+                false
+            ))
+        }
     }
 
 }
