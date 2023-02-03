@@ -23,6 +23,7 @@ class MainFragment : FragmentBaseNCMVVM<MainViewModel, FragmentMainBinding>() {
 
     override fun onView() {
         setAdapter()
+       viewModel.getTargetList()
     }
     private fun setAdapter() {
         binding.recyclerViewTarget.apply {

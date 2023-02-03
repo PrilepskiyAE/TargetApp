@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TargetModel(
-    override val id: Long,
+    override val id: Long=0,
     val title: String = "",
     val description: String = "",
     val revard: String = "",

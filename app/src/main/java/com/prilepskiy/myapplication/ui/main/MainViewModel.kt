@@ -19,7 +19,7 @@ class MainViewModel @Inject constructor(
     private val  getAllTargetUseCase: GetAllTargetUseCase
     ) : BaseViewModel() {
     init {
-        getTargetList()
+
     }
 
     private val _targetList: MutableStateFlow<List<TargetModel>?> by lazy {
