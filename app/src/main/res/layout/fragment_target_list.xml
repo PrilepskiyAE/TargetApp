@@ -24,7 +24,7 @@
                 android:id="@+id/imgLogo"
                 android:layout_width="match_parent"
                 android:layout_height="274dp"
-                tools:src="@tools:sample/avatars" />
+                android:src="@drawable/baseline_photo_24" />
 
             <View
                 android:id="@+id/view2"
@@ -162,20 +162,29 @@
                 android:background="#FFBF00" />
 
             <TextView
-                android:id="@+id/tvEnd"
+                android:id="@+id/btSaveTarget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="Сохранить"
+                android:textColor="#FDFDFD"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:gravity="center"
                 android:text="Завешить"
                 android:textColor="#FFC107"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tvClose"
+                android:id="@+id/btDelete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginBottom="150dp"
                 android:gravity="center"
                 android:text="Удалить"
                 android:textColor="#F10000"
