@@ -6,6 +6,8 @@
     <string name="cloce">Отмена</string>
     <string name="hello">Здравствуйте</string>
     <string name="mainlabel">Как ваши дела?</string>
+    <string name="target">Цели</string>
+    <string name="add_target">Добавить цель</string>
     <string-array name="tab_title">
         <item>Цель</item>
         <item>Шаги</item>
