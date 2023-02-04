@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="16dp"
+    android:layout_margin="@dimen/space_16"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    app:cardCornerRadius="@dimen/space_10"
+    app:cardElevation="@dimen/space_10">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3F51B5">
+        android:background="@color/blue1">
 
         <TextView
             android:id="@+id/tvData"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="2023"
+            tools:text="2023"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +28,9 @@
             android:id="@+id/tvDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Пн 6 февр"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_8"
+           tools:text="Пн 6 февр"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvData" />
 
@@ -38,9 +38,9 @@
             android:id="@+id/btCalendarOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="OK"
-            android:textColor="#FFAA00"
+            android:layout_margin="@dimen/space_5"
+            android:text="@string/ok"
+            android:textColor="@color/gold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btCalendarCansel" />
@@ -49,9 +49,9 @@
             android:id="@+id/btCalendarCansel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Отмена"
-            android:textColor="#FBA800"
+            android:layout_margin="@dimen/space_5"
+            android:text="@string/cloce"
+            android:textColor="@color/gold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btCalendarOk"
             app:layout_constraintHorizontal_bias="0.95"

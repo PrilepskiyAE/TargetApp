@@ -3,4 +3,18 @@
 
     <dimen name="space_24">24dp</dimen>
     <dimen name="view_padding_10">10dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_10">10dp</dimen>
+    <dimen name="space_134">134dp</dimen>
+    <dimen name="space_143">143dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="space_124">124dp</dimen>
+    <dimen name="space_18">18dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_75">75dp</dimen>
+    <dimen name="space_84">84dp</dimen>
+    <dimen name="space_54">54dp</dimen>
+    <dimen name="space_22">22dp</dimen>
+    <dimen name="space_5">5dp</dimen>
+    <dimen name="size16">16sp</dimen>
 </resources>
