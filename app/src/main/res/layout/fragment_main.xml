@@ -54,12 +54,12 @@
 
                     <ImageView
                         android:id="@+id/person_bt"
-                        android:layout_width="51dp"
-                        android:layout_height="43dp"
+                        android:layout_width="@dimen/space_51"
+                        android:layout_height="@dimen/space_43"
 
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="5dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_margin="@dimen/space_5"
+                        android:layout_marginBottom="@dimen/space_5"
                         android:src="@drawable/icon_person"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -71,24 +71,24 @@
                 android:id="@+id/target_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="30dp"
-                android:text="Цели"
-                android:textColor="#F4EFEF"
-                android:textSize="16sp" />
+                android:layout_marginStart="@dimen/space_5"
+                android:layout_marginTop="@dimen/space_30"
+                android:text="@string/target"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/size16" />
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/space_10"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+                app:cardCornerRadius="@dimen/space_10"
+                app:cardElevation="@dimen/space_10">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btAddTarget"
                     android:layout_width="match_parent"
 
-                    android:layout_height="40dp"
-                    android:background="#3F51B5">
+                    android:layout_height="@dimen/space_40"
+                    android:background="@color/blue1">
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -103,9 +103,9 @@
                         android:id="@+id/add_target"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Добавить цель"
-                        android:textColor="#CCBDBD"
+                        android:layout_marginStart="@dimen/space_16"
+                        android:text="@string/add_target"
+                        android:textColor="@color/grey"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                         app:layout_constraintStart_toEndOf="@+id/imageView2"
                         app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -115,9 +115,9 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_margin="5dp"
-                android:background="#FFBF00" />
+                android:layout_height="@dimen/space_05"
+                android:layout_margin="@dimen/space_5"
+                android:background="@color/gold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewTarget"
@@ -134,8 +134,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Показать завершенные"
-                android:textColor="#EDDA39"
-                android:textSize="16sp" />
+                android:textColor="@color/gold"
+                android:textSize="@dimen/size16" />
 
         </LinearLayout>
     </ScrollView>

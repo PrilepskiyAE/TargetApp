@@ -17,4 +17,9 @@
     <dimen name="space_22">22dp</dimen>
     <dimen name="space_5">5dp</dimen>
     <dimen name="size16">16sp</dimen>
+    <dimen name="space_51">51dp</dimen>
+    <dimen name="space_43">43dp</dimen>
+    <dimen name="space_30">30dp</dimen>
+    <dimen name="space_40">40dp</dimen>
+    <dimen name="space_05">0.5dp</dimen>
 </resources>
