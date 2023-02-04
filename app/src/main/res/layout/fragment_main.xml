@@ -33,19 +33,19 @@
                         android:id="@+id/title_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="Здравствуйте"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp" />
+                        android:layout_margin="@dimen/space_5"
+                        android:text="@string/hello"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size16" />
 
                     <TextView
                         android:id="@+id/text_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Как ваши дела?"
-                        android:textColor="#F6F1F1" />
+                        android:layout_marginStart="@dimen/space_5"
+                        android:layout_marginTop="@dimen/space_5"
+                        android:text="@string/mainlabel"
+                        android:textColor="@color/grey" />
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E0C0C"
-    app:statusBarBackground="#00000000"
+    app:statusBarBackground="@color/black"
     tools:context=".ui.targetMain.TargetMainFragment">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -23,7 +23,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#0B0909"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/tab_color_selector"
         app:tabTextAppearance="@style/TabTextAppearancee"
-        app:tabTextColor="#73ACC8"
+        app:tabTextColor="@color/blue2"
         android:shrinkColumns="*"
         android:stretchColumns="*"
 
@@ -42,7 +42,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_height="@dimen/space_54"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +54,9 @@
             android:id="@+id/btRevert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_22"
+            android:layout_marginBottom="@dimen/space_22"
             android:src="@drawable/baseline_keyboard_backspace_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

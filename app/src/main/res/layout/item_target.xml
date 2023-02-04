@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="16dp"
+    android:layout_margin="@dimen/space_16"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    app:cardCornerRadius="@dimen/space_10"
+    app:cardElevation="@dimen/space_10">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3F51B5">
+        android:background="@color/blue1">
 
         <ImageView
             android:id="@+id/imgLogoMain"
-            android:layout_width="134dp"
-            android:layout_height="143dp"
-            android:layout_marginStart="32dp"
+            android:layout_width="@dimen/space_134"
+            android:layout_height="@dimen/space_143"
+            android:layout_marginStart="@dimen/space_32"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,8 +28,8 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_16"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -40,8 +40,8 @@
             android:id="@+id/tvDataTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="#FFFCFC"
+            android:layout_marginStart="@dimen/space_16"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvTitle"
             app:layout_constraintStart_toEndOf="@+id/imgLogoMain"
@@ -50,11 +50,11 @@
         <ProgressBar
             android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="124dp"
-            android:layout_height="15dp"
-            android:layout_marginTop="11dp"
-            android:progress="20"
-            android:layout_marginBottom="18dp"
+            android:layout_width="@dimen/space_124"
+            android:layout_height="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_10"
+            android:progress="0"
+            android:layout_marginBottom="@dimen/space_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgLogoMain"
