@@ -4,12 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.prilepskiy.myapplication.databinding.FragmentTargetListBinding
+import com.prilepskiy.myapplication.databinding.FragmentTargetMainBinding
+import com.prilepskiy.myapplication.domain.model.TargetModel
 
 import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
 import com.prilepskiy.myapplication.ui.base.loadImage
@@ -18,7 +21,11 @@ import com.prilepskiy.myapplication.ui.targetMain.TargetMainFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TargetListFragment( private val stat:Boolean) : FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
+class TargetListFragment(
+                          private val stat:Boolean,
+                         private val tvsave:TextView,
+                          private val target: TargetModel?=null
+) : FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
     override val binding: FragmentTargetListBinding by viewBinding()
     override val viewModel: TargetListViewModel by viewModels()
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
@@ -27,23 +34,33 @@ class TargetListFragment( private val stat:Boolean) : FragmentBaseMVVM<TargetLis
 
 
     override fun onView() {
-        Log.d("TAG99", "onView: $stat ")
+        with(binding){
         if (!stat){
-            binding.btEnd.visibility=View.INVISIBLE
-            binding.btDelete.visibility=View.INVISIBLE
+            btEnd.visibility=View.INVISIBLE
+            btDelete.visibility=View.INVISIBLE
         }else{
-
+        if (target!=null){
+            etTitle.setText(target.title)
+            etDescription.setText(target.description)
+            etReward.setText(target.revard)
+            loadImage(imgLogo, target.resId)
+            etData.setText(target.date)
+            url=target.resId
         }
+        }
+
 
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             it.data?.apply {
-                loadImage(binding.imgLogo, data.toString())
+                loadImage(imgLogo, data.toString())
                 url=data.toString()
 
             }
         }
     }
+    }
     override fun onViewClick() {
+
         binding.imgLogo.setOnClickListener {
 
             val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -51,17 +68,60 @@ class TargetListFragment( private val stat:Boolean) : FragmentBaseMVVM<TargetLis
             activityResultLauncher.launch(intent)
         }
         binding.btSaveTarget.setOnClickListener {
-            viewModel.addNewTarget(
-                binding.etTitle.text.toString(),
-                binding.etDescription.text.toString(),
-                binding.etReward.text.toString(),
-                binding.etData.text.toString(),
-                url
-            )
+            if(!stat)
+                addTarget()
+            else{
+                modification()
+            }
+        }
+        tvsave.setOnClickListener {
+            if(!stat)
+            addTarget()
+            else{
+                modification()
+            }
+        }
+        binding.btDelete.setOnClickListener {
+            if (target != null) {
+                viewModel.deleteTarget(target)
+                findNavController().popBackStack()
+            }
+
+        }
+        binding.btEnd.setOnClickListener {
+            target?.let { it1 -> viewModel.modififation(it1.copy(status = !it1.status)) }
             findNavController().popBackStack()
         }
 
+
+
     }
 
+    private fun modification() {
+        Log.d("TAG", "onViewClick: $target")
+        target?.let { it1 ->
+            viewModel.modififation(
+                it1.copy(
+                    title = binding.etTitle.text.toString(),
+                    description = binding.etDescription.text.toString(),
+                    revard = binding.etReward.text.toString(),
+                    date = binding.etData.text.toString(),
+                    resId = url
+                )
+            )
+        }
+        findNavController().popBackStack()
+    }
+
+    private fun addTarget() {
+        viewModel.addNewTarget(
+            binding.etTitle.text.toString(),
+            binding.etDescription.text.toString(),
+            binding.etReward.text.toString(),
+            binding.etData.text.toString(),
+            url
+        )
+        findNavController().popBackStack()
+    }
 
 }

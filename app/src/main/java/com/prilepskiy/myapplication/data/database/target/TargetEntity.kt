@@ -20,6 +20,7 @@ data class TargetEntity(
     companion object{
         fun from(data: TargetModel): TargetEntity = with(data) {
             TargetEntity(
+                id=id,
                 title = title,
                 description = description,
                 revard = revard,
