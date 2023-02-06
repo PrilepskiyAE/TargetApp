@@ -30,8 +30,8 @@ class NoteRepositoryImpl @Inject constructor(private val db: TargetDataBase) : N
 
 
 
-    override suspend fun getNoteFromTarget(titleTarget: String): Flow<List<NoteModel>> {
-        return db.noteDao.getNoteFromTarget(titleTarget).map {
+    override suspend fun getNoteFromTarget(id: Long): Flow<List<NoteModel>> {
+        return db.noteDao.getNoteFromTarget(id).map {
                 NoteModel.fromList(it)
             }
         }
@@ -55,16 +55,16 @@ class NoteRepositoryImpl @Inject constructor(private val db: TargetDataBase) : N
     }
     override suspend fun inT() {
         withContext(Dispatchers.IO) {
-            db.noteDao.insert(NoteEntity(title = "test"))
-            db.noteDao.insert(NoteEntity(title = "test2"))
-            db.noteDao.insert(NoteEntity(title = "test3"))
-            db.noteDao.insert(NoteEntity(title = "test4"))
-            db.noteDao.insert(NoteEntity(title = "test5"))
-            db.noteDao.insert(NoteEntity(title = "test6"))
-            db.noteDao.insert(NoteEntity(title = "test7"))
-            db.noteDao.insert(NoteEntity(title = "test8"))
-            db.noteDao.insert(NoteEntity(title = "test9"))
-            db.noteDao.insert(NoteEntity(title = "test10"))
+//            db.noteDao.insert(NoteEntity(title = "test"))
+//            db.noteDao.insert(NoteEntity(title = "test2"))
+//            db.noteDao.insert(NoteEntity(title = "test3"))
+//            db.noteDao.insert(NoteEntity(title = "test4"))
+//            db.noteDao.insert(NoteEntity(title = "test5"))
+//            db.noteDao.insert(NoteEntity(title = "test6"))
+//            db.noteDao.insert(NoteEntity(title = "test7"))
+//            db.noteDao.insert(NoteEntity(title = "test8"))
+//            db.noteDao.insert(NoteEntity(title = "test9"))
+//            db.noteDao.insert(NoteEntity(title = "test10"))
         }
     }
 }

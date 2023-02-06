@@ -12,8 +12,8 @@ abstract class NoteDao : BaseDao<NoteEntity>(){
     @Query("SELECT * FROM note_table")
     abstract fun getAllNote(): Flow<List<NoteEntity>>
 
-    @Query("SELECT * FROM note_table WHERE titleTarget=:titleTarget")
-    abstract fun getNoteFromTarget(titleTarget:String): Flow<List<NoteEntity>>
+    @Query("SELECT * FROM note_table WHERE idTarget=:id")
+    abstract fun getNoteFromTarget(id:Long): Flow<List<NoteEntity>>
 
     @Query("SELECT * FROM note_table WHERE title=:title")
     abstract  fun getNoteByTitle(title:String): Flow<List<NoteEntity>>

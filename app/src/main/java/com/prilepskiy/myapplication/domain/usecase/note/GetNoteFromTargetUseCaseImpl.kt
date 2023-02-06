@@ -10,8 +10,8 @@ import javax.inject.Inject
 
 class GetNoteFromTargetUseCaseImpl @Inject constructor(private val repo: NoteRepository) :
     GetNoteFromTargetUseCase {
-    override suspend fun invoke(titleTarget: String): Flow<List<NoteModel>> =
+    override suspend fun invoke(id: Long): Flow<List<NoteModel>> =
         withContext(Dispatchers.IO) {
-            return@withContext repo.getNoteFromTarget(titleTarget)
+            return@withContext repo.getNoteFromTarget(id)
         }
 }

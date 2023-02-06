@@ -18,9 +18,6 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val  getAllTargetUseCase: GetAllTargetUseCase
     ) : BaseViewModel() {
-    init {
-
-    }
 
     private val _targetList: MutableStateFlow<List<TargetModel>?> by lazy {
         MutableStateFlow(
@@ -28,12 +25,7 @@ class MainViewModel @Inject constructor(
         )
     }
    val targetList =_targetList.asStateFlow()
-//    fun testInit(){
-//        viewModelScope.launch {
-//            nt.inT()
-//            Log.d("TAG99", "init")
-//        }
-//    }
+
     fun getTargetList(){
         viewModelScope.launch {
            val result= getAllTargetUseCase()

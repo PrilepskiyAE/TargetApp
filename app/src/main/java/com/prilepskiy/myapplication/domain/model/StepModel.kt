@@ -11,7 +11,7 @@ data class StepModel(
     override val id: Long,
     val title: String = "",
     val description: String = "",
-    val titleTarget: String = "",
+    val idTarget:Long,
     val status: Boolean = true
 ) : BaseAdapterTypes(), Parcelable {
     companion object {
@@ -20,8 +20,8 @@ data class StepModel(
                 id = id,
                 title = title,
                 description = description,
-                titleTarget = titleTarget,
-                status = status
+                status = status,
+                idTarget= idTarget
             )
         }
         fun fromList(list: List<StepEntity>): List<StepModel> {
