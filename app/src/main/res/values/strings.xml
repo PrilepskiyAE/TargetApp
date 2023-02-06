@@ -8,6 +8,7 @@
     <string name="mainlabel">Как ваши дела?</string>
     <string name="target">Цели</string>
     <string name="add_target">Добавить цель</string>
+    <string name="btSave">Сохранить</string>
     <string-array name="tab_title">
         <item>Цель</item>
         <item>Шаги</item>

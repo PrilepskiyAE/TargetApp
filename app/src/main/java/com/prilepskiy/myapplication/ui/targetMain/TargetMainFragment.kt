@@ -30,7 +30,7 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
         val pagerAdapter = ViewPagerAdapter(
             this@TargetMainFragment,
             listOf(
-                TargetListFragment(args.ismode),
+                TargetListFragment(args.ismode, tvsave = binding.btSave,args.target),
                 StepListFragment(),
                 NoteListFragment()
             )
@@ -51,6 +51,7 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
         binding.btRevert.setOnClickListener {
             findNavController().popBackStack()
         }
+
 
         }
     }

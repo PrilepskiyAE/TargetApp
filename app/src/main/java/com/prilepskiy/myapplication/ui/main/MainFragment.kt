@@ -16,7 +16,7 @@ class MainFragment : FragmentBaseNCMVVM<MainViewModel, FragmentMainBinding>() {
     val tAdapter=TargetAdapter {
         navigateFragment(
             MainFragmentDirections.actionMainFragmentToTargetMainFragment(
-                true
+                true,it
             )
         )
     }
@@ -44,7 +44,7 @@ class MainFragment : FragmentBaseNCMVVM<MainViewModel, FragmentMainBinding>() {
     override fun onViewClick() {
         binding.btAddTarget.setOnClickListener {
             navigateFragment(MainFragmentDirections.actionMainFragmentToTargetMainFragment(
-                false
+                false,null
             ))
         }
     }

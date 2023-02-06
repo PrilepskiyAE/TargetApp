@@ -17,6 +17,12 @@
                 android:name="ismode"
                 app:argType="boolean"
                 />
+            <argument
+                android:name="target"
+                app:argType="com.prilepskiy.myapplication.domain.model.TargetModel"
+                app:nullable="true"
+                />
+
         </action>
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
@@ -30,6 +36,12 @@
         <argument
             android:name="ismode"
             app:argType="boolean"
+            />
+        <argument
+            android:name="target"
+            app:argType="com.prilepskiy.myapplication.domain.model.TargetModel"
+            app:nullable="true"
+            android:defaultValue="@null"
             />
     </fragment>
     <fragment

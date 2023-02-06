@@ -2,6 +2,7 @@ package com.prilepskiy.myapplication.ui.targetMain.targetList
 
 import androidx.lifecycle.viewModelScope
 import com.prilepskiy.myapplication.domain.interactors.target.AddTargetUseCase
+import com.prilepskiy.myapplication.domain.interactors.target.DeleteTargetUseCase
 import com.prilepskiy.myapplication.domain.interactors.target.UpdateTargetUseCase
 import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.BaseViewModel
@@ -11,7 +12,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TargetListViewModel@Inject constructor(private val addTargetUseCase: AddTargetUseCase,
-                                             private val updateTargetUseCase: UpdateTargetUseCase
+                                             private val updateTargetUseCase: UpdateTargetUseCase,
+                                             private val deleteTargetUseCase: DeleteTargetUseCase
 ): BaseViewModel() {
 
  fun addNewTarget(
@@ -36,27 +38,16 @@ class TargetListViewModel@Inject constructor(private val addTargetUseCase: AddTa
     }
 }
 
-fun modififation(
-    id: Long,
-    title: String,
-    description: String = "",
-    revard: String = "",
-    date: String = "",
-    resId: String = "",
-    status: Boolean = true
-) {
+fun modififation(date: TargetModel) {
     viewModelScope.launch {
-        updateTargetUseCase(
-            TargetModel(
-                id,
-                title,
-                description,
-                revard,
-                date,
-                resId,
-                status
-            )
-        )
+        updateTargetUseCase(date)
     }
 }
+    fun deleteTarget(date:TargetModel){
+        viewModelScope.launch {
+            deleteTargetUseCase.invoke(date)
+        }
+    }
+
+
 }
