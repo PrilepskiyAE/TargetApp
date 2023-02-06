@@ -10,7 +10,7 @@ interface NoteRepository {
     suspend fun addNote(data:NoteModel)
     suspend fun updateNote(data:NoteModel)
     suspend fun getAllNote(): Flow<List<NoteModel>>
-    suspend fun getNoteFromTarget(titleTarget:String): Flow<List<NoteModel>>
+    suspend fun getNoteFromTarget(id:Long): Flow<List<NoteModel>>
     suspend fun getNoteByTitle(title:String): Flow<List<NoteModel>>
     suspend fun getNoteById(id:Long): Flow<NoteModel>
     suspend fun deleteNote(title:String)

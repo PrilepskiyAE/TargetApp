@@ -11,7 +11,7 @@ data class NoteEntity(
     val id: Long=0,
     val title:String="",
     val description:String="",
-    val titleTarget:String="",
+    val idTarget:Long,
     val resId:String="",
     val date:String=""
 ){
@@ -20,9 +20,9 @@ data class NoteEntity(
             NoteEntity(
                 title=title,
                 description=description,
-                titleTarget=titleTarget,
                 resId=resId,
-                date=date
+                date=date ,
+                idTarget=idTarget
             )
         }
     }

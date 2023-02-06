@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class NoteModel (
-    override val id: Long,
+    override val id: Long=0,
     val title:String="",
     val description:String="",
-    val titleTarget:String="",
+    val idTarget:Long,
     val resId:String="",
     val date:String=""
 ): BaseAdapterTypes(), Parcelable {
@@ -20,9 +20,9 @@ data class NoteModel (
                 id=id,
                 title=title,
                 description=description,
-                titleTarget=titleTarget,
                 resId=resId,
-                date=date
+                date=date,
+                idTarget=idTarget
             )
         }
         fun fromList(list: List<NoteEntity>):List<NoteModel>{

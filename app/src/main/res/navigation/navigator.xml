@@ -49,4 +49,14 @@
         android:name="com.prilepskiy.myapplication.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/stepInfoFragment"
+        android:name="com.prilepskiy.myapplication.ui.stepInfo.StepInfoFragment"
+        android:label="fragment_step_info"
+        tools:layout="@layout/fragment_step_info" />
+    <fragment
+        android:id="@+id/noteInfoFragment"
+        android:name="com.prilepskiy.myapplication.ui.noteInfo.NoteInfoFragment"
+        android:label="fragment_note_info"
+        tools:layout="@layout/fragment_note_info" />
 </navigation>

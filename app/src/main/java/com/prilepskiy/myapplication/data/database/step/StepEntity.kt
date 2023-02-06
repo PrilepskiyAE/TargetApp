@@ -11,7 +11,7 @@ data class StepEntity(
     val id: Long=0,
     val title:String="",
     val description:String="",
-    val titleTarget:String="",
+    val idTarget:Long,
     val status:Boolean=true
 ){
     companion object{
@@ -19,8 +19,8 @@ data class StepEntity(
             StepEntity(
                 title=title,
                 description=description,
-                titleTarget=titleTarget,
-                status = status
+                status = status,
+                idTarget=idTarget
             )
         }
     }}

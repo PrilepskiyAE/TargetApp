@@ -4,5 +4,5 @@ import com.prilepskiy.myapplication.domain.model.StepModel
 import kotlinx.coroutines.flow.Flow
 
 interface GetStepFromTargetUseCase {
-    suspend operator fun invoke(titleTarget:String): Flow<List<StepModel>>
+    suspend operator fun invoke(id:Long): Flow<List<StepModel>>
 }

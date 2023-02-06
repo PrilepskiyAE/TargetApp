@@ -26,7 +26,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
 
     private val stat:Boolean?=ContractTarget.getDataStat()
     private val tvsave:TextView?=ContractTarget.getDataTvsave()
-    private val target: TargetModel?=ContractTarget.getDataTarget()
+    private var target: TargetModel?=ContractTarget.getDataTarget()
 
     override fun onView() {
         with(binding){
@@ -35,12 +35,12 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
             btDelete.visibility=View.INVISIBLE
         }else{
         if (target!=null){
-            etTitle.setText(target.title)
-            etDescription.setText(target.description)
-            etReward.setText(target.revard)
-            loadImage(imgLogo, target.resId)
-            etData.setText(target.date)
-            url=target.resId
+            etTitle.setText(target!!.title)
+            etDescription.setText(target!!.description)
+            etReward.setText(target!!.revard)
+            loadImage(imgLogo, target!!.resId)
+            etData.setText(target!!.date)
+            url= target!!.resId
         }
         }
 
@@ -78,7 +78,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
         }
         binding.btDelete.setOnClickListener {
             if (target != null) {
-                viewModel.deleteTarget(target)
+                viewModel.deleteTarget(target!!)
                 findNavController().popBackStack()
             }
 
@@ -117,6 +117,22 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
             url
         )
         findNavController().popBackStack()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (stat==false){
+        target = TargetModel(
+            title = binding.etTitle.text.toString(),
+            description = binding.etDescription.text.toString() ,
+            revard =   binding.etReward.text.toString(),
+            date =binding.etData.text.toString(),
+            status = true,
+            resId = url )
+            if (tvsave != null) {
+                ContractTarget.initData( stat,tvsave,target)
+            }
+    }
     }
 
 }

@@ -13,7 +13,7 @@ interface StepRepository {
 
    suspend fun getAllSteps(): Flow<List<StepModel>>
 
-   suspend fun getStepFromTarget(titleTarget:String): Flow<List<StepModel>>
+   suspend fun getStepFromTarget(id: Long): Flow<List<StepModel>>
 
    suspend fun getStepByTitle(title:String): Flow<List<StepModel>>
     suspend fun getStepById(id:Long): Flow<StepModel>

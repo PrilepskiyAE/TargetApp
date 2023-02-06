@@ -23,8 +23,8 @@ class StepRepositoryImpl@Inject constructor(private val db: TargetDataBase): Ste
         }
     }
 
-    override suspend fun getStepFromTarget(titleTarget: String): Flow<List<StepModel>> {
-        return db.stepDao.getStepFromTarget(titleTarget).map {
+    override suspend fun getStepFromTarget(id: Long): Flow<List<StepModel>> {
+        return db.stepDao.getStepFromTarget(id).map {
             StepModel.fromList(it)
         }
     }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetStepFromTargetUseCaseImpl@Inject constructor(private val repo: StepRepository): GetStepFromTargetUseCase {
-    override suspend fun invoke(titleTarget: String): Flow<List<StepModel>> = withContext(Dispatchers.IO) {
-        return@withContext repo.getStepFromTarget(titleTarget)
+    override suspend fun invoke(id:Long): Flow<List<StepModel>> = withContext(Dispatchers.IO) {
+        return@withContext repo.getStepFromTarget(id)
     }
 }

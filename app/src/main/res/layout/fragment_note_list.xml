@@ -27,7 +27,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-
+                    android:id="@+id/btAdd_note"
                     android:background="#3F51B5">
 
                     <ImageView
@@ -59,6 +59,7 @@
                 android:background="#FFBF00" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNote"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
