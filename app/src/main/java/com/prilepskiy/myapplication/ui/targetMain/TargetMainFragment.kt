@@ -20,17 +20,23 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
     override val binding: FragmentTargetMainBinding by viewBinding()
     override val viewModel: TargetMainViewModel by viewModels()
     val args:TargetMainFragmentArgs by navArgs()
+
     override fun onView() {
         Log.d("TAG99", "onView:${args.ismode} "
         )
-
+        ContractTarget.initData( args.ismode,binding.btSave,args.target)
+        //saveData?.saveData( args.ismode,binding.btSave,args.target)
        // val targetFragment=if (args.ismode){TargetListFragment(true)}else{TargetListFragment()}
         with(binding) {
             val tabTitles :List<String> = listOf("Цель","Шаги","Заметки")
         val pagerAdapter = ViewPagerAdapter(
             this@TargetMainFragment,
             listOf(
-                TargetListFragment(args.ismode, tvsave = binding.btSave,args.target),
+                TargetListFragment(
+                   // args.ismode,
+                    // binding.btSave,
+                   // args.target
+                ),
                 StepListFragment(),
                 NoteListFragment()
             )

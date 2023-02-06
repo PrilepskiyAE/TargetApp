@@ -1,7 +1,6 @@
 package com.prilepskiy.myapplication.ui.targetMain.targetList
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -9,33 +8,29 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.prilepskiy.myapplication.databinding.FragmentTargetListBinding
-import com.prilepskiy.myapplication.databinding.FragmentTargetMainBinding
 import com.prilepskiy.myapplication.domain.model.TargetModel
 
 import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
 import com.prilepskiy.myapplication.ui.base.loadImage
 import com.prilepskiy.myapplication.ui.base.viewBinding
-import com.prilepskiy.myapplication.ui.targetMain.TargetMainFragmentArgs
+import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TargetListFragment(
-                          private val stat:Boolean,
-                         private val tvsave:TextView,
-                          private val target: TargetModel?=null
-) : FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
+class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
     override val binding: FragmentTargetListBinding by viewBinding()
     override val viewModel: TargetListViewModel by viewModels()
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private  var url:String="empty"
 
-
+    private val stat:Boolean?=ContractTarget.getDataStat()
+    private val tvsave:TextView?=ContractTarget.getDataTvsave()
+    private val target: TargetModel?=ContractTarget.getDataTarget()
 
     override fun onView() {
         with(binding){
-        if (!stat){
+        if (stat==false){
             btEnd.visibility=View.INVISIBLE
             btDelete.visibility=View.INVISIBLE
         }else{
@@ -68,14 +63,14 @@ class TargetListFragment(
             activityResultLauncher.launch(intent)
         }
         binding.btSaveTarget.setOnClickListener {
-            if(!stat)
+            if(stat==false)
                 addTarget()
             else{
                 modification()
             }
         }
-        tvsave.setOnClickListener {
-            if(!stat)
+        tvsave?.setOnClickListener {
+            if(stat==false)
             addTarget()
             else{
                 modification()
