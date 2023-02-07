@@ -1,5 +1,6 @@
 package com.prilepskiy.myapplication.ui.targetMain.targetList
 
+import android.widget.TextView
 import androidx.lifecycle.viewModelScope
 import com.prilepskiy.myapplication.domain.interactors.target.AddTargetUseCase
 import com.prilepskiy.myapplication.domain.interactors.target.DeleteTargetUseCase
@@ -15,7 +16,6 @@ class TargetListViewModel@Inject constructor(private val addTargetUseCase: AddTa
                                              private val updateTargetUseCase: UpdateTargetUseCase,
                                              private val deleteTargetUseCase: DeleteTargetUseCase
 ): BaseViewModel() {
-
  fun addNewTarget(
     data: TargetModel
 ) {

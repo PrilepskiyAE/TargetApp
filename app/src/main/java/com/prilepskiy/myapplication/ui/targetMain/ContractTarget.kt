@@ -40,4 +40,9 @@ object ContractTarget  {
         return target?:data
     }
 
+    fun setDataTvsave( data: TextView): TextView? {
+        tvsave=data
+        return tvsave
+    }
+
 }
