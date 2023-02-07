@@ -30,7 +30,6 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
     override fun onView() {
 
         ContractTarget.initData(args.ismode, binding.btSave, args.target)
-        ContractTarget.setRegistary(requireActivity().activityResultRegistry)
         //saveData?.saveData( args.ismode,binding.btSave,args.target)
         // val targetFragment=if (args.ismode){TargetListFragment(true)}else{TargetListFragment()}
         with(binding) {

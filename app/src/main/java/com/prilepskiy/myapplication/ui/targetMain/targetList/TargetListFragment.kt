@@ -47,15 +47,19 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                     url= target!!.resId
                 }
             }
-            ContractTarget.getUrl()
-            Log.d("TAG", "onCreate1: $url")
+
 
         }
     }
     override fun onViewClick() {
 
-        loadImage(binding.imgLogo,"/document/image:11056")
-        lifecycle.addObserver(ContractTarget)
+        binding.imgLogo.setOnClickListener {
+
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            // activityResultLauncher.launch(intent)
+
+        }
         binding.btSaveTarget.setOnClickListener {
             if(stat==false)
                 addTarget()
@@ -86,22 +90,6 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.imgLogo.setOnClickListener {
-
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-           // activityResultLauncher.launch(intent)
-            ContractTarget.selectImage()
-            url= ContractTarget.getUrl()?:"empty"
-
-            Log.d("TAG", "onResume99: $url")
-
-
-
-        }
-    }
 
     private fun modification() {
         Log.d("TAG", "onViewClick: $target")
@@ -132,18 +120,18 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
 
     override fun onPause() {
         super.onPause()
-        if (stat==false){
-        target = TargetModel(
-            title = binding.etTitle.text.toString(),
-            description = binding.etDescription.text.toString() ,
-            revard =   binding.etReward.text.toString(),
-            date =binding.etData.text.toString(),
-            status = true,
-            resId = url )
-            if (tvsave != null) {
-                ContractTarget.initData( stat,tvsave,target)
-            }
-    }
+//        if (stat==false){
+//        target = TargetModel(
+//            title = binding.etTitle.text.toString(),
+//            description = binding.etDescription.text.toString() ,
+//            revard =   binding.etReward.text.toString(),
+//            date =binding.etData.text.toString(),
+//            status = true,
+//            resId = url )
+//            if (tvsave != null) {
+//                ContractTarget.initData( stat,tvsave,target)
+//            }
+//    }
     }
 
 }
