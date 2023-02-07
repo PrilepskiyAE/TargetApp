@@ -7,6 +7,9 @@ import com.prilepskiy.myapplication.domain.model.NoteModel
 import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -23,7 +26,7 @@ class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase:
     val noteList =_noteList.asStateFlow()
 
     fun getNotebyTargetList(id:Long){
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val result= getNoteFromTargetUseCase(id)
 
             result.collectLatest {
@@ -31,4 +34,5 @@ class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase:
             }
         }
     }
+
 }

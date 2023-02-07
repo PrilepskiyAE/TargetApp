@@ -48,11 +48,12 @@
             tools:layout_conversion_absoluteHeight="28dp"
             tools:layout_conversion_absoluteWidth="85dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/imgLogo2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars" />
+        android:layout_height="228dp"
+        android:src="@drawable/baseline_photo_24" />
 
     <View
         android:id="@+id/view4"
