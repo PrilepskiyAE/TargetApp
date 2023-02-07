@@ -40,11 +40,11 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
                     listOf(
                         TargetListFragment(
                             // args.ismode,
-                            // binding.btSave,
+                             binding.btSave,
                             // args.target
                         ),
-                        StepListFragment(),
-                        NoteListFragment()
+                        StepListFragment(binding.btSave),
+                        NoteListFragment(binding.btSave)
                     )
                 ).apply {
                     viewPager.adapter = this

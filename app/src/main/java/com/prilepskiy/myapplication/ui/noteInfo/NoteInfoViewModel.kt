@@ -4,9 +4,10 @@ import androidx.lifecycle.viewModelScope
 import com.prilepskiy.myapplication.domain.interactors.note.AddNoteUseCase
 import com.prilepskiy.myapplication.domain.interactors.note.UpdateNoteUseCase
 import com.prilepskiy.myapplication.domain.model.NoteModel
-import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,28 +18,17 @@ class NoteInfoViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     fun addNewNote(
-        title: String = "",
-        description: String = "",
-        idTarget: Long,
-        resId: String = "",
-        date: String = ""
+        data: NoteModel
     ) {
         viewModelScope.launch {
             addNoteUseCase(
-                NoteModel(
-
-                    title = title,
-                    description = description,
-                    idTarget = idTarget,
-                    resId = resId,
-                    date = date
-                )
+              data
             )
         }
     }
 
-    fun modififation(date: NoteModel) {
-        viewModelScope.launch {
+    fun modification(date: NoteModel) {
+        CoroutineScope(Dispatchers.IO).launch {
             updateNoteUseCase(date)
         }
     }

@@ -12,7 +12,7 @@ data class TargetModel(
     val description: String = "",
     val revard: String = "",
     val date: String = "",
-    val resId: String = "",
+    val resId: String = "empty",
     val status: Boolean = true
 ) : BaseAdapterTypes() , Parcelable {
     companion object {

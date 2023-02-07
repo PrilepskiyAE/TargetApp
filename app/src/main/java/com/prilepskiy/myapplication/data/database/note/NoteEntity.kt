@@ -18,6 +18,7 @@ data class NoteEntity(
     companion object{
         fun from(data:NoteModel): NoteEntity = with(data){
             NoteEntity(
+                id=id,
                 title=title,
                 description=description,
                 resId=resId,

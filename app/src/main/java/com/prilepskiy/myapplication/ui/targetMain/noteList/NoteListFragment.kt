@@ -3,6 +3,8 @@ package com.prilepskiy.myapplication.ui.targetMain.noteList
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -29,8 +31,15 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
     override val binding: FragmentNoteListBinding by viewBinding()
     override val viewModel:NoteListViewModel by viewModels()
     private var target: TargetModel? = ContractTarget.getDataTarget()
-    val nAdapter= NoteAdapter {
-        findNavController().navigate(R.id.noteInfoFragment)
+    val nAdapter= NoteAdapter { it ->
+         findNavController().navigate(R.id.noteInfoFragment, bundleOf(
+             ID to  it.id,
+             TITLE to it.title,
+             RESID to it.resId,
+             IDTARGET to it.idTarget,
+             ))
+       // findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteInfoFragment().setNode(it))
+
     }
     override fun onEach() {
         onEach(viewModel.noteList){
@@ -58,11 +67,19 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
         Log.d("TAG", "onViewClick: $target")
         binding.btAddNote.setOnClickListener {
             findNavController().navigate(R.id.noteInfoFragment)
+          //  findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteInfoFragment())
         }
     }
 
     override fun onResume() {
         super.onResume()
        viewModel.getNotebyTargetList(target?.id?:0)
+
+    }
+    companion object{
+      const val ID  = "noteId"
+        const val TITLE =   "noteTitle"
+        const val RESID = "noteResId"
+        const val IDTARGET="noteidTarget"
     }
 }
