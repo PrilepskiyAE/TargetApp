@@ -17,23 +17,11 @@ class TargetListViewModel@Inject constructor(private val addTargetUseCase: AddTa
 ): BaseViewModel() {
 
  fun addNewTarget(
-    title: String,
-    description: String = "",
-    revard: String = "",
-    date: String = "",
-    resId: String = "",
-    status: Boolean = true
+    data: TargetModel
 ) {
     viewModelScope.launch {
         addTargetUseCase(
-            TargetModel(
-                title = title,
-                description = description,
-                revard = revard,
-                date = date,
-                resId = resId,
-                status = status
-            )
+              data
         )
     }
 }

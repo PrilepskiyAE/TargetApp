@@ -35,4 +35,9 @@ object ContractTarget  {
         return target
     }
 
+    fun setDataTarget(data:TargetModel): TargetModel {
+       target= data
+        return target?:data
+    }
+
 }

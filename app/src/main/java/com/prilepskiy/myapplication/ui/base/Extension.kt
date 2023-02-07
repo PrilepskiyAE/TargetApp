@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.NavHostFragment
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.runBlocking
 
 inline fun <reified T> Flow<T>.observeInLifecycle(
     lifecycleOwner: LifecycleOwner
@@ -47,3 +49,10 @@ fun View.pxToDp(px: Int): Int = context.pxToDp(px)
 fun View.dpToPx(dp: Int): Int = context.dpToPx(dp)
 
 fun Context.dpToPx(dp: Int): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), resources.displayMetrics).toInt()
+
+fun getUniqueId(): Long {
+    runBlocking {
+        delay(1L)
+    }
+    return System.currentTimeMillis()
+}

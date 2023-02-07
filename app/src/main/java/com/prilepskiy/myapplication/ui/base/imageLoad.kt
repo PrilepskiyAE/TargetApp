@@ -1,5 +1,6 @@
 package com.prilepskiy.myapplication.ui.base
 
+import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.prilepskiy.myapplication.R

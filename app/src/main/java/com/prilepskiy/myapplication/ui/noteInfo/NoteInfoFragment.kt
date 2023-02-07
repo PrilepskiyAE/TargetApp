@@ -27,7 +27,7 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
 
     override fun onResume() {
         super.onResume()
-        Log.d("TAG", "onView: $target")
+        Log.d("TAG", "onView11: $target")
 
     }
     override fun onViewClick() {
