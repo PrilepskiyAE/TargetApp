@@ -38,8 +38,8 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
         }
     }
     override fun onView() {
-        setAdapter()
-        ContractTarget.getDataTarget()?.let { viewModel.getNotebyTargetList(it.id) }
+         setAdapter()
+       // ContractTarget.getDataTarget()?.let { viewModel.getNotebyTargetList(it.id) }
 
     }
     private fun setAdapter() {
@@ -52,6 +52,11 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+     viewModel.getNotebyTargetList(0)
+    }
     override fun onViewClick() {
         binding.btAddNote.setOnClickListener {
             findNavController().navigate(R.id.noteInfoFragment,bundleOf(

@@ -10,6 +10,7 @@ import com.prilepskiy.myapplication.domain.model.TargetModel
 
 import com.prilepskiy.myapplication.ui.base.FragmentBaseNCMVVM
 import com.prilepskiy.myapplication.ui.base.viewBinding
+import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,11 +18,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoBinding>() {
     override val binding: FragmentNoteInfoBinding by viewBinding()
     override val viewModel:NoteInfoViewModel by viewModels()
-    private var target: TargetModel? = null
+    private var target: TargetModel? = ContractTarget.getDataTarget()
     override fun onView() {
+//        Log.d("TAG", "onView: $target")
+//        target = arguments?.get("note") as TargetModel?
+//        binding.etNote.setText(target?.title?:"")
+    }
+
+    override fun onResume() {
+        super.onResume()
         Log.d("TAG", "onView: $target")
-        target = arguments?.get("note") as TargetModel?
-        binding.etNote.setText(target?.title?:"")
+
     }
     override fun onViewClick() {
         binding.tvLabel.setOnClickListener{

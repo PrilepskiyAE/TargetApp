@@ -1,7 +1,9 @@
 package com.prilepskiy.myapplication.ui.targetMain.targetList
 
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -21,47 +23,39 @@ import dagger.hilt.android.AndroidEntryPoint
 class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
     override val binding: FragmentTargetListBinding by viewBinding()
     override val viewModel: TargetListViewModel by viewModels()
-    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+  //  lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private  var url:String="empty"
 
     private val stat:Boolean?=ContractTarget.getDataStat()
     private val tvsave:TextView?=ContractTarget.getDataTvsave()
     private var target: TargetModel?=ContractTarget.getDataTarget()
 
+
+
     override fun onView() {
         with(binding){
-        if (stat==false){
-            btEnd.visibility=View.INVISIBLE
-            btDelete.visibility=View.INVISIBLE
-        }else{
-        if (target!=null){
-            etTitle.setText(target!!.title)
-            etDescription.setText(target!!.description)
-            etReward.setText(target!!.revard)
-            loadImage(imgLogo, target!!.resId)
-            etData.setText(target!!.date)
-            url= target!!.resId
-        }
-        }
-
-
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            it.data?.apply {
-                loadImage(imgLogo, data.toString())
-                url=data.toString()
-
+            if (stat==false){
+                btEnd.visibility=View.INVISIBLE
+                btDelete.visibility=View.INVISIBLE
+            }else{
+                if (target!=null){
+                    etTitle.setText(target!!.title)
+                    etDescription.setText(target!!.description)
+                    etReward.setText(target!!.revard)
+                    loadImage(imgLogo, target!!.resId)
+                    etData.setText(target!!.date)
+                    url= target!!.resId
+                }
             }
+            ContractTarget.getUrl()
+            Log.d("TAG", "onCreate1: $url")
+
         }
-    }
     }
     override fun onViewClick() {
 
-        binding.imgLogo.setOnClickListener {
-
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-            activityResultLauncher.launch(intent)
-        }
+        loadImage(binding.imgLogo,"/document/image:11056")
+        lifecycle.addObserver(ContractTarget)
         binding.btSaveTarget.setOnClickListener {
             if(stat==false)
                 addTarget()
@@ -90,6 +84,23 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
 
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.imgLogo.setOnClickListener {
+
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+           // activityResultLauncher.launch(intent)
+            ContractTarget.selectImage()
+            url= ContractTarget.getUrl()?:"empty"
+
+            Log.d("TAG", "onResume99: $url")
+
+
+
+        }
     }
 
     private fun modification() {
