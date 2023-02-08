@@ -42,7 +42,7 @@ class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase:
     fun addNewTarget(
         data: TargetModel
     ) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             addTargetUseCase(
                 data
             )
