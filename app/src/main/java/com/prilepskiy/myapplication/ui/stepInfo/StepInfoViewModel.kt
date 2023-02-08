@@ -23,7 +23,7 @@ class StepInfoViewModel@Inject constructor(
     private val deleteStepUseCase: DeleteStepUseCase
 ) : BaseViewModel() {
 
-    fun addStepNote(
+    fun addStep(
         data: StepModel
     ) {
         viewModelScope.launch {
