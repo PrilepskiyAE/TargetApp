@@ -31,6 +31,7 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
     override val binding: FragmentNoteListBinding by viewBinding()
     override val viewModel:NoteListViewModel by viewModels()
     private var target: TargetModel? = ContractTarget.getDataTarget()
+    private val stat:Boolean?=ContractTarget.getDataStat()
     val nAdapter= NoteAdapter { it ->
          findNavController().navigate(R.id.noteInfoFragment, bundleOf(
              ID to  it.id,
@@ -69,8 +70,35 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
             findNavController().navigate(R.id.noteInfoFragment)
           //  findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteInfoFragment())
         }
+        binding.tvSaveNote.setOnClickListener {
+            if(stat==false)
+                target?.let { it1 -> addTarget(it1) }
+            else{
+                modification()
+            }
+        }
+    }
+    private fun modification() {
+        Log.d("TAG", "onViewClick: $target")
+        target?.let { it1 ->
+            viewModel.modififation(
+                it1
+            )
+        }
+        findNavController().popBackStack()
     }
 
+    private fun addTarget(data:TargetModel) {
+        viewModel.addNewTarget(
+            data
+//            binding.etTitle.text.toString(),
+//            binding.etDescription.text.toString(),
+//            binding.etReward.text.toString(),
+//            binding.etData.text.toString(),
+//            url
+        )
+        findNavController().popBackStack()
+    }
     override fun onResume() {
         super.onResume()
        viewModel.getNotebyTargetList(target?.id?:0)

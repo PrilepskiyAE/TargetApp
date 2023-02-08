@@ -31,7 +31,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
     private  var url:String="empty"
 
     private val stat:Boolean?=ContractTarget.getDataStat()
-    private val tvsave:TextView?=ContractTarget.getDataTvsave()
+
     private var target: TargetModel=ContractTarget.getDataTarget()?:ContractTarget.setDataTarget(TargetModel(id=getUniqueId()))
     private lateinit var getObserver : GetContentLifecycleObserver
 
@@ -76,21 +76,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                 modification()
             }
         }
-        tvsave?.setOnClickListener {
-            if(stat==false)
-            addTarget(
-                target.copy(
-                    title= binding.etTitle.text.toString(),
-                    description= binding.etDescription.text.toString(),
-                    revard= binding.etReward.text.toString(),
-                    date=binding.etData.text.toString(),
-                    resId = url
-                )
-                )
-            else{
-                modification()
-            }
-        }
+
         binding.btDelete.setOnClickListener {
 
                 viewModel.deleteTarget(target)

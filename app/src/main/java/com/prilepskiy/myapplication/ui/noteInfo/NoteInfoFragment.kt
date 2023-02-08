@@ -70,7 +70,7 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
 
     override fun onViewClick() {
         binding.tvLabel.setOnClickListener {
-            if (arguments == null){
+            if (arguments == null) {
                 viewModel.addNewNote(
                     NoteModel(
                         idNote,
@@ -81,18 +81,17 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
                     )
                 )
                 Log.d("TAG99", "add:2 ")
-            }
-            else {
+            } else {
                 Log.d("TAG99", "mod:1 ")
                 viewModel.modification(
-                NoteModel(
-                    idNote,
-                    binding.etNote.text.toString(),
-                    "",
-                    idTagert,
-                    url
+                    NoteModel(
+                        idNote,
+                        binding.etNote.text.toString(),
+                        "",
+                        idTagert,
+                        url
+                    )
                 )
-            )
             }
 
             popBackStack()
@@ -102,6 +101,18 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
             activityResultLauncher.launch(intent)
+        }
+        binding.tvDelete.setOnClickListener {
+            viewModel.delete(
+                NoteModel(
+                    idNote,
+                    binding.etNote.text.toString(),
+                    "",
+                    idTagert,
+                    url
+                )
+            )
+            findNavController().popBackStack()
         }
     }
 
