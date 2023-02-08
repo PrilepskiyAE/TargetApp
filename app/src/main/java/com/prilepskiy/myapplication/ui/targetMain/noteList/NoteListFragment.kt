@@ -65,6 +65,7 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
     }
 
     override fun onViewClick() {
+        Log.d("TAG", "onViewClick: $stat")
         Log.d("TAG", "onViewClick: $target")
         binding.btAddNote.setOnClickListener {
             findNavController().navigate(R.id.noteInfoFragment)
@@ -91,11 +92,6 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
     private fun addTarget(data:TargetModel) {
         viewModel.addNewTarget(
             data
-//            binding.etTitle.text.toString(),
-//            binding.etDescription.text.toString(),
-//            binding.etReward.text.toString(),
-//            binding.etData.text.toString(),
-//            url
         )
         findNavController().popBackStack()
     }
