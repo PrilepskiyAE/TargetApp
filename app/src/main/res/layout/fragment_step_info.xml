@@ -113,4 +113,11 @@
         android:layout_height="1.5dp"
         android:layout_margin="5dp"
         android:background="#FFBF00" />
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/btDelete"
+        android:textColor="#FF9800" />
 </LinearLayout>
