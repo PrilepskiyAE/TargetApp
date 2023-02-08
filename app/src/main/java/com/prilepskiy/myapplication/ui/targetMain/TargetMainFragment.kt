@@ -29,7 +29,7 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
     private var targetCurrentTab = 0
     override fun onView() {
 
-        ContractTarget.initData(args.ismode, binding.btSave, args.target)
+        ContractTarget.initData(args.ismode, args.target)
         //saveData?.saveData( args.ismode,binding.btSave,args.target)
         // val targetFragment=if (args.ismode){TargetListFragment(true)}else{TargetListFragment()}
         with(binding) {
@@ -40,11 +40,11 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
                     listOf(
                         TargetListFragment(
                             // args.ismode,
-                             binding.btSave,
+
                             // args.target
                         ),
-                        StepListFragment(binding.btSave),
-                        NoteListFragment(binding.btSave)
+                        StepListFragment(),
+                        NoteListFragment()
                     )
                 ).apply {
                     viewPager.adapter = this

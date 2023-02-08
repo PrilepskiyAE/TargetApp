@@ -17,9 +17,8 @@ object ContractTarget  {
     private var target: TargetModel? = null
 
 
-    fun initData(statLocal: Boolean, tvsaveLocal: TextView, targetLocal: TargetModel? = null) {
+    fun initData(statLocal: Boolean,  targetLocal: TargetModel? = null) {
         stat = statLocal
-        tvsave = tvsaveLocal
         target = targetLocal
     }
 
@@ -27,9 +26,6 @@ object ContractTarget  {
         return stat
     }
 
-    fun getDataTvsave(): TextView? {
-        return tvsave
-    }
 
     fun getDataTarget(): TargetModel? {
         return target
@@ -40,9 +36,6 @@ object ContractTarget  {
         return target?:data
     }
 
-    fun setDataTvsave( data: TextView): TextView? {
-        tvsave=data
-        return tvsave
-    }
+
 
 }

@@ -57,7 +57,13 @@
                 android:layout_height="1.5dp"
                 android:layout_margin="5dp"
                 android:background="#FFBF00" />
-
+            <TextView
+                android:id="@+id/tvSaveStep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/btSave"
+                android:textColor="#FF9800" />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
