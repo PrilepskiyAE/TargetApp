@@ -2,7 +2,6 @@ package com.prilepskiy.myapplication.ui.targetMain.targetList
 
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,16 +11,11 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import com.prilepskiy.myapplication.databinding.FragmentTargetListBinding
 import com.prilepskiy.myapplication.domain.model.TargetModel
+import com.prilepskiy.myapplication.ui.base.*
 
-import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
-import com.prilepskiy.myapplication.ui.base.getUniqueId
-import com.prilepskiy.myapplication.ui.base.loadImage
-import com.prilepskiy.myapplication.ui.base.viewBinding
 import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
 import dagger.hilt.android.AndroidEntryPoint
-
-
-
+import java.time.LocalDateTime
 
 
 @AndroidEntryPoint
@@ -54,6 +48,9 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
             getObserver = GetContentLifecycleObserver(requireActivity().activityResultRegistry)
             lifecycle.addObserver(getObserver)
         }
+        if (!target.status){
+            binding.btEnd.text="Начать"
+        }
     }
     override fun onViewClick() {
 
@@ -69,12 +66,16 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                         title= binding.etTitle.text.toString(),
                         description= binding.etDescription.text.toString(),
                         revard= binding.etReward.text.toString(),
-                        date=binding.etData.text.toString(),
+                        date=getLastDay( LocalDateTime.now().second+864000000).toString(),
                         resId = url
                 ))
             else{
                 modification()
             }
+        }
+        binding.etData.setOnClickListener {
+//            getLastDay( LocalDateTime.now().second+864000000)
+
         }
 
         binding.btDelete.setOnClickListener {
@@ -102,7 +103,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                     title = binding.etTitle.text.toString(),
                     description = binding.etDescription.text.toString(),
                     revard = binding.etReward.text.toString(),
-                    date = binding.etData.text.toString(),
+                    date =getLastDay( LocalDateTime.now().second+864000000).toString(),
                     resId = url
                 )
             )

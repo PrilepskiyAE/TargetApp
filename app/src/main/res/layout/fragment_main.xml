@@ -126,7 +126,7 @@
 
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="100"
-                tools:listitem="@layout/item_target" />
+                tools:listitem="@layout/item_target_active" />
 
             <TextView
                 android:id="@+id/btEndTarget"
