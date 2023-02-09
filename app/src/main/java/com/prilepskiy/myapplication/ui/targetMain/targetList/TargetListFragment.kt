@@ -23,6 +23,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
     override val binding: FragmentTargetListBinding by viewBinding()
     override val viewModel: TargetListViewModel by viewModels()
     private  var url:String="empty"
+    private  var date:Long=0
 
     private val stat:Boolean?=ContractTarget.getDataStat()
 
@@ -66,7 +67,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                         title= binding.etTitle.text.toString(),
                         description= binding.etDescription.text.toString(),
                         revard= binding.etReward.text.toString(),
-                        date=getLastDay( LocalDateTime.now().second+864000000).toString(),
+                        date=getLastDay(1675977788186).toString(),
                         resId = url
                 ))
             else{
@@ -75,6 +76,9 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
         }
         binding.etData.setOnClickListener {
 //            getLastDay( LocalDateTime.now().second+864000000)
+            showCalendarDialog {
+               date=it
+            }
 
         }
 
@@ -103,7 +107,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                     title = binding.etTitle.text.toString(),
                     description = binding.etDescription.text.toString(),
                     revard = binding.etReward.text.toString(),
-                    date =getLastDay( LocalDateTime.now().second+864000000).toString(),
+                    date =getLastDay( date).toString(),
                     resId = url
                 )
             )
