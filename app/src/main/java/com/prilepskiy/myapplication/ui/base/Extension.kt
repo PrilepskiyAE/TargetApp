@@ -1,6 +1,7 @@
 package com.prilepskiy.myapplication.ui.base
 import android.content.Context
 import android.content.res.Resources
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,10 @@ import androidx.navigation.fragment.NavHostFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.runBlocking
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.concurrent.TimeUnit
 
 inline fun <reified T> Flow<T>.observeInLifecycle(
     lifecycleOwner: LifecycleOwner
@@ -43,6 +48,24 @@ fun View.setMargins(
 }
 
 fun Context.pxToDp(px: Int): Int = (px / Resources.getSystem().displayMetrics.density).toInt()
+
+fun getData():String
+{
+    val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    val date: LocalDate = LocalDate.now()
+
+    val date2: LocalDate = LocalDate.now()
+
+    return date.format(formatter)
+}
+
+fun getLastDay(lday: Int):Long{
+    val current = LocalDateTime.now()
+    Log.d("TAG55", "onView:${current} ")
+    val day = TimeUnit.MILLISECONDS.toDays(lday-current.second.toLong())
+    Log.d("TAG55", "onView:${day} ")
+    return day
+}
 
 fun View.pxToDp(px: Int): Int = context.pxToDp(px)
 

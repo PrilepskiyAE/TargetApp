@@ -138,16 +138,18 @@
                 android:text="Дата звершения"
                 android:textColor="#F8F8F8" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/etData"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/corner_radius_edit_text"
+                android:gravity="start"
                 android:hint="Конкретная дата"
                 android:padding="@dimen/view_padding_10"
                 android:textColor="#ECE0E0"
                 android:textColorHint="#F1EBEB"
+                android:textSize="16sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

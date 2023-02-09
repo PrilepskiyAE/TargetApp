@@ -11,11 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.prilepskiy.myapplication.databinding.FragmentNoteInfoBinding
 import com.prilepskiy.myapplication.domain.model.NoteModel
 import com.prilepskiy.myapplication.domain.model.TargetModel
+import com.prilepskiy.myapplication.ui.base.*
 
-import com.prilepskiy.myapplication.ui.base.FragmentBaseNCMVVM
-import com.prilepskiy.myapplication.ui.base.getUniqueId
-import com.prilepskiy.myapplication.ui.base.loadImage
-import com.prilepskiy.myapplication.ui.base.viewBinding
 import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
 import com.prilepskiy.myapplication.ui.targetMain.noteList.NoteListFragment
 
@@ -77,7 +74,8 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
                         binding.etNote.text.toString(),
                         "",
                         idTagert,
-                        url
+                        url,
+                        getData()
                     )
                 )
                 Log.d("TAG99", "add:2 ")
