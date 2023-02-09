@@ -59,8 +59,10 @@ fun getData():String
     return date.format(formatter)
 }
 
-fun getLastDay(lday: Int):Long{
+fun getLastDay(lday: Long):Long{
     val current = LocalDateTime.now()
+    val current2 = LocalDateTime.now()
+
     Log.d("TAG55", "onView:${current} ")
     val day = TimeUnit.MILLISECONDS.toDays(lday-current.second.toLong())
     Log.d("TAG55", "onView:${day} ")

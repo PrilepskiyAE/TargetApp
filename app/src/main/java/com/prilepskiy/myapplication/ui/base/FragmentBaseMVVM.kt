@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.prilepskiy.myapplication.ui.targetMain.CaledarDialog
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
 
@@ -14,7 +15,7 @@ abstract class FragmentBaseMVVM <ViewModel : BaseViewModel, ViewBind : ViewBindi
     abstract val viewModel: ViewModel
     abstract val binding: ViewBind
 
-
+    private var calendarDialog: CaledarDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +31,24 @@ abstract class FragmentBaseMVVM <ViewModel : BaseViewModel, ViewBind : ViewBindi
         onViewClick()
     }
 
+    fun showCalendarDialog( action: (i:Long) -> Unit){
+        calendarDialog = CaledarDialog()
+        calendarDialog?.action={
+            action(it)
+            calendarDialog!!.dismiss()
+        }
+        calendarDialog?.onDismissAction={
+            calendarDialog=null
+        }
 
+        try {
+            if (!calendarDialog!!.isVisible && !calendarDialog!!.isAdded)
+                calendarDialog!!.show(childFragmentManager, "CALENDAR_DIALOG_TAG")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+    }
 
     protected open fun onView() {}
 
