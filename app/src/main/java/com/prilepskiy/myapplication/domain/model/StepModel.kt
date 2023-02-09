@@ -12,7 +12,7 @@ data class StepModel(
     val title: String = "",
     val description: String = "",
     val idTarget:Long,
-    val status: Boolean = true
+    val status: Boolean
 ) : BaseAdapterTypes(), Parcelable {
     companion object {
         fun from(data: StepEntity): StepModel = with(data) {

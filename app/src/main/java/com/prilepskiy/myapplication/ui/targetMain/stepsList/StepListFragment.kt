@@ -23,7 +23,7 @@ class StepListFragment : FragmentBaseMVVM<StepListViewModel, FragmentStepListBin
     override val viewModel: StepListViewModel by viewModels()
     private var target: TargetModel? = ContractTarget.getDataTarget()
     private val stat:Boolean?= ContractTarget.getDataStat()
-    val sAdapter= StepAdapter { it ->
+    val sAdapter= StepAdapter ({ it ->
         findNavController().navigate(R.id.stepInfoFragment, bundleOf(
             ID to  it.id,
             TITLE to it.title,
@@ -31,7 +31,10 @@ class StepListFragment : FragmentBaseMVVM<StepListViewModel, FragmentStepListBin
             IDTARGET to it.idTarget,
         )
         )
-    }
+    },{ Log.d("TAG", "onItemLongClick88:${it} ")
+        viewModel.modStatus(it)
+
+    })
     override fun onEach() {
         onEach(viewModel.stepList){
             sAdapter.submitList(it)

@@ -3,6 +3,7 @@ package com.prilepskiy.myapplication.ui.targetMain.stepsList
 import androidx.lifecycle.viewModelScope
 import com.prilepskiy.myapplication.domain.interactors.note.GetNoteFromTargetUseCase
 import com.prilepskiy.myapplication.domain.interactors.step.GetStepFromTargetUseCase
+import com.prilepskiy.myapplication.domain.interactors.step.UpdateStepUseCase
 import com.prilepskiy.myapplication.domain.interactors.target.AddTargetUseCase
 import com.prilepskiy.myapplication.domain.interactors.target.UpdateTargetUseCase
 import com.prilepskiy.myapplication.domain.model.NoteModel
@@ -21,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class StepListViewModel@Inject constructor(
     private val getStepFromTargetUseCase: GetStepFromTargetUseCase, private val addTargetUseCase: AddTargetUseCase,
-    private val updateTargetUseCase: UpdateTargetUseCase
+    private val updateTargetUseCase: UpdateTargetUseCase, private val updateStepUseCase: UpdateStepUseCase,
 ): BaseViewModel() {
     private val _stepList: MutableStateFlow<List<StepModel>?> by lazy {
         MutableStateFlow(
@@ -52,6 +53,25 @@ class StepListViewModel@Inject constructor(
     fun modififation(date: TargetModel) {
         viewModelScope.launch {
             updateTargetUseCase(date)
+        }
+    }
+    fun modStatus(date: StepModel ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            var stationItems = _stepList.value
+            var updatedItem = stationItems?.find { it.id == date.id }
+            val index = stationItems?.indexOf(updatedItem)?:0
+            updatedItem=updatedItem?.copy(status = !date.status)
+            if (index == -1) {
+                Throwable("Error: Index Error")
+            }
+            stationItems = stationItems?.toMutableList().apply {
+                if (updatedItem != null) {
+                    this?.set(index, updatedItem)
+                    updateStepUseCase(updatedItem)
+                }
+            }
+            _stepList.emit(stationItems)
+
         }
     }
 }

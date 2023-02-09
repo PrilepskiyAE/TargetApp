@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.prilepskiy.myapplication.R
 import com.prilepskiy.myapplication.databinding.ItemNoteBinding
-import com.prilepskiy.myapplication.databinding.ItemStepBinding
+
 import com.prilepskiy.myapplication.domain.model.NoteModel
-import com.prilepskiy.myapplication.domain.model.StepModel
+
 import com.prilepskiy.myapplication.ui.base.BaseAdapter
 import com.prilepskiy.myapplication.ui.base.BaseViewHolder
 import com.prilepskiy.myapplication.ui.base.loadImage

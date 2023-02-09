@@ -12,11 +12,12 @@ data class StepEntity(
     val title:String="",
     val description:String="",
     val idTarget:Long,
-    val status:Boolean=true
+    val status:Boolean
 ){
     companion object{
         fun from(data:StepModel): StepEntity = with(data){
             StepEntity(
+                id=id,
                 title=title,
                 description=description,
                 status = status,
