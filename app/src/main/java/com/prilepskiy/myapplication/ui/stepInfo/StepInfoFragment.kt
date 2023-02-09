@@ -54,7 +54,7 @@ class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoB
                         idStep,
                         binding.etStep.text.toString(),
                         binding.etDescriptor.text.toString(),
-                        idTagert
+                        idTagert,true
                     )
                 )
 
@@ -64,7 +64,7 @@ class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoB
                         idStep,
                         binding.etStep.text.toString(),
                         binding.etDescriptor.text.toString(),
-                        idTagert
+                        idTagert,true
                     )
                 )
             }
@@ -77,7 +77,7 @@ class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoB
                     idStep,
                     binding.etStep.text.toString(),
                     binding.etDescriptor.text.toString(),
-                    idTagert
+                    idTagert,true
                 )
             )
             findNavController().popBackStack()

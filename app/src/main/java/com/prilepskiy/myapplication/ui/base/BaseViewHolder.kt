@@ -9,4 +9,5 @@ abstract class BaseViewHolder<Item, ItemViewBinding : ViewBinding>(binding: Item
 
     abstract fun bind(item: Item, context: Context)
     open fun onItemClick(item: Item) {}
+    open fun onItemLongClick(item: Item) {}
 }

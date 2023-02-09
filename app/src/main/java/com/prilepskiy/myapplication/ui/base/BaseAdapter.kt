@@ -16,6 +16,10 @@ abstract class BaseAdapter<ItemViewBinding : ViewBinding, Item : DiffUtilModel<*
                     if (position <= itemCount - 1)
                         onItemClick(item)
                 }
+                itemView.setOnLongClickListener {
+                    onItemLongClick(item)
+                    true
+                }
             }
         }
     }
