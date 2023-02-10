@@ -54,20 +54,18 @@ fun getData():String
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     val date: LocalDate = LocalDate.now()
 
-    val date2: LocalDate = LocalDate.now()
-
     return date.format(formatter)
 }
 
-fun getLastDay(lday: Long):Long{
-    val current = LocalDateTime.now()
-    val current2 = LocalDateTime.now()
-
-    Log.d("TAG55", "onView:${current} ")
-    val day = TimeUnit.MILLISECONDS.toDays(lday-current.second.toLong())
-    Log.d("TAG55", "onView:${day} ")
-    return day
-}
+//fun getLastDay(lday: Long):Long{
+//    val current = LocalDateTime.now()
+//    val current2 = LocalDateTime.now()
+//
+//    Log.d("TAG55", "onView:${current} ")
+//    val day = TimeUnit.MILLISECONDS.toDays(lday-current.second.toLong())
+//    Log.d("TAG55", "onView:${day} ")
+//    return day
+//}
 
 fun View.pxToDp(px: Int): Int = context.pxToDp(px)
 

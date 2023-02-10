@@ -5,12 +5,14 @@ import android.util.Log
 import com.prilepskiy.myapplication.databinding.DialogCalendarBinding
 import com.prilepskiy.myapplication.ui.base.BaseDialog
 import com.prilepskiy.myapplication.ui.base.viewBinding
+import java.text.DateFormat
+import java.util.*
 
 class CaledarDialog() : BaseDialog<DialogCalendarBinding>() {
     override val binding: DialogCalendarBinding by viewBinding()
     var onDismissAction: () -> Unit = {}
     var onCancelAction: () -> Unit = {}
-    var action: (i:Long) -> Unit = {}
+    var action: (i:String) -> Unit = {}
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
@@ -23,13 +25,18 @@ class CaledarDialog() : BaseDialog<DialogCalendarBinding>() {
     }
 
     override fun onViewClick() {
-        binding.calendarView.setOnDateChangeListener { calendarView, i, i2, i3 ->
-            Log.d("TAG", "onViewClick: ${calendarView.date}")
-            Log.d("TAG", "onViewClick: $i")
-            Log.d("TAG", "onViewClick: $i2")
-            Log.d("TAG", "onViewClick: $i3")
-            action(calendarView.date)
+
+        binding.btCalendarCansel.setOnClickListener {
+            dismiss()
+        }
+        binding.btCalendarOk.setOnClickListener {
+            val selectedDate = binding.calendarView.date
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = selectedDate
+            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+            action(dateFormatter.format(calendar.time))
             dismiss()
         }
     }
+
 }

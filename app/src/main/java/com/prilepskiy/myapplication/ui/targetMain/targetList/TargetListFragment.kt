@@ -23,7 +23,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
     override val binding: FragmentTargetListBinding by viewBinding()
     override val viewModel: TargetListViewModel by viewModels()
     private  var url:String="empty"
-    private  var date:Long=0
+    private  var date:String=""
 
     private val stat:Boolean?=ContractTarget.getDataStat()
 
@@ -67,7 +67,7 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                         title= binding.etTitle.text.toString(),
                         description= binding.etDescription.text.toString(),
                         revard= binding.etReward.text.toString(),
-                        date=getLastDay(1675977788186).toString(),
+                        date=date.toString(),
                         resId = url
                 ))
             else{
@@ -101,13 +101,13 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
 
     private fun modification() {
         Log.d("TAG", "onViewClick: $target")
-        target?.let { it1 ->
+        target.let { it1 ->
             viewModel.modififation(
                 it1.copy(
                     title = binding.etTitle.text.toString(),
                     description = binding.etDescription.text.toString(),
                     revard = binding.etReward.text.toString(),
-                    date =getLastDay( date).toString(),
+                    date =date.toString(),
                     resId = url
                 )
             )
