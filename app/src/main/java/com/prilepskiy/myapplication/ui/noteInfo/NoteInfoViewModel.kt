@@ -22,7 +22,7 @@ class NoteInfoViewModel @Inject constructor(
     fun addNewNote(
         data: NoteModel
     ) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             addNoteUseCase(
                 data
             )
@@ -36,7 +36,7 @@ class NoteInfoViewModel @Inject constructor(
     }
 
     fun delete(data: NoteModel) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             deleteNoteUseCase(
                 data
             )
