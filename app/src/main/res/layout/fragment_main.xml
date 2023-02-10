@@ -50,21 +50,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/person_bt"
-                        android:layout_width="@dimen/space_51"
-                        android:layout_height="@dimen/space_43"
-
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/space_5"
-                        android:layout_marginBottom="@dimen/space_5"
-                        android:src="@drawable/icon_person"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_height="match_parent"/>
             </LinearLayout>
 
             <TextView
@@ -127,15 +113,6 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="100"
                 tools:listitem="@layout/item_target_active" />
-
-            <TextView
-                android:id="@+id/btEndTarget"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Показать завершенные"
-                android:textColor="@color/gold"
-                android:textSize="@dimen/size16" />
 
         </LinearLayout>
     </ScrollView>

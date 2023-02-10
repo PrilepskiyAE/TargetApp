@@ -49,7 +49,8 @@ class TargetAdapter(private val click: (TargetModel) -> Unit) :
                 when (this) {
                     is ItemTargetActiveBinding -> {
                         tvTitle.text = item.title
-                        tvDataTime.text = "осталось ${item.date} дней" // todo подумать
+                        if (item.date.isNotEmpty())
+                        tvDataTime.text = "Выполнить до ${item.date}"
                         if (item.resId.equals("empty") || item.resId.isNullOrEmpty()) {
                             imgLogoMain.setImageResource(R.drawable.baseline_photo_24)
                         } else {
@@ -58,7 +59,8 @@ class TargetAdapter(private val click: (TargetModel) -> Unit) :
                     }
                     is ItemTargetPassiveBinding -> {
                         tvTitle.text = item.title
-                        tvDataTime.text = "осталось ${item.date} дней" // todo подумать
+                        if (item.date.isNotEmpty())
+                        tvDataTime.text = "Выполнить до ${item.date}" // todo подумать
                         if (item.resId.equals("empty") || item.resId.isNullOrEmpty()) {
                             imgLogoMain.setImageResource(R.drawable.baseline_photo_24)
                         } else {

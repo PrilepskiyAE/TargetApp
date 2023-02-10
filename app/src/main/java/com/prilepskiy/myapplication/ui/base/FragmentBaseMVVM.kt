@@ -31,7 +31,7 @@ abstract class FragmentBaseMVVM <ViewModel : BaseViewModel, ViewBind : ViewBindi
         onViewClick()
     }
 
-    fun showCalendarDialog( action: (i:Long) -> Unit){
+    fun showCalendarDialog( action: (i:String) -> Unit){
         calendarDialog = CaledarDialog()
         calendarDialog?.action={
             action(it)
