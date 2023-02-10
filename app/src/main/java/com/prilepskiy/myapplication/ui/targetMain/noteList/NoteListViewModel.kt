@@ -50,7 +50,7 @@ class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase:
     }
 
     fun modififation(date: TargetModel) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             updateTargetUseCase(date)
         }
     }

@@ -26,7 +26,7 @@ class StepInfoViewModel@Inject constructor(
     fun addStep(
         data: StepModel
     ) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             addStepUseCase(
                 data
             )
@@ -40,7 +40,7 @@ class StepInfoViewModel@Inject constructor(
     }
 
     fun delete(data: StepModel) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             deleteStepUseCase(
                 data
             )
