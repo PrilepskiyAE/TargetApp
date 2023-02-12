@@ -39,19 +39,15 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
              RESID to it.resId,
              IDTARGET to it.idTarget,
              ))
-       // findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteInfoFragment().setNode(it))
 
     }
     override fun onEach() {
         onEach(viewModel.noteList){
-            Log.d("TAG", "onEach: ${it?.size}")
             nAdapter.submitList(it)
         }
     }
 
     override fun onView() {
-        super.onView()
-
         setAdapter()
     }
     private fun setAdapter() {
@@ -65,11 +61,8 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
     }
 
     override fun onViewClick() {
-        Log.d("TAG", "onViewClick: $stat")
-        Log.d("TAG", "onViewClick: $target")
         binding.btAddNote.setOnClickListener {
             findNavController().navigate(R.id.noteInfoFragment)
-          //  findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteInfoFragment())
         }
         binding.tvSaveNote.setOnClickListener {
             if(stat==false)
@@ -80,7 +73,6 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
         }
     }
     private fun modification() {
-        Log.d("TAG", "onViewClick: $target")
         target?.let { it1 ->
             viewModel.modififation(
                 it1

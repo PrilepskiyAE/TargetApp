@@ -57,11 +57,10 @@ class StepListFragment : FragmentBaseMVVM<StepListViewModel, FragmentStepListBin
     }
 
     override fun onViewClick() {
-        Log.d("TAG", "onViewClick: $stat")
-        Log.d("TAG", "onViewClick: $target")
+
         binding.btAddStep.setOnClickListener {
             findNavController().navigate(R.id.stepInfoFragment)
-            //  findNavController().navigate(NoteListFragmentDirections.actionNoteListFragmentToNoteInfoFragment())
+
         }
         binding.tvSaveStep.setOnClickListener {
             if(stat==false)
