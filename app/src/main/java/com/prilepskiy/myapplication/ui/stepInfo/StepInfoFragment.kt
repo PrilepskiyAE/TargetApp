@@ -46,43 +46,46 @@ class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoB
         binding.etStep.setText(title)
         binding.etDescriptor.setText(descriptor)
     }
+
     override fun onViewClick() {
-        binding.tvLabel.setOnClickListener {
-            if (arguments == null) {
-                viewModel.addStep(
-                    StepModel(
-                        idStep,
-                        binding.etStep.text.toString(),
-                        binding.etDescriptor.text.toString(),
-                        idTagert,true
+        with(binding) {
+            tvLabel.setOnClickListener {
+                if (arguments == null) {
+                    viewModel.addStep(
+                        StepModel(
+                            idStep,
+                            etStep.text.toString(),
+                            etDescriptor.text.toString(),
+                            idTagert, true
+                        )
                     )
-                )
 
-            } else {
-                viewModel.modification(
-                    StepModel(
-                        idStep,
-                        binding.etStep.text.toString(),
-                        binding.etDescriptor.text.toString(),
-                        idTagert,true
+                } else {
+                    viewModel.modification(
+                        StepModel(
+                            idStep,
+                            etStep.text.toString(),
+                            etDescriptor.text.toString(),
+                            idTagert, true
+                        )
                     )
-                )
+                }
+
+                popBackStack()
             }
-
-            popBackStack()
-        }
-        binding.tvDelete.setOnClickListener {
-            viewModel.delete(
-                StepModel(
-                    idStep,
-                    binding.etStep.text.toString(),
-                    binding.etDescriptor.text.toString(),
-                    idTagert,true
+            tvDelete.setOnClickListener {
+                viewModel.delete(
+                    StepModel(
+                        idStep,
+                        binding.etStep.text.toString(),
+                        binding.etDescriptor.text.toString(),
+                        idTagert, true
+                    )
                 )
-            )
-            findNavController().popBackStack()
+                findNavController().popBackStack()
+            }
+            btRevert.setOnClickListener { findNavController().popBackStack() }
         }
-        binding.btRevert.setOnClickListener { findNavController().popBackStack() }
     }
 
 }

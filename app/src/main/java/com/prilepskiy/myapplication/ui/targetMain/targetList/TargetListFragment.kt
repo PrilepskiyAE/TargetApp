@@ -54,13 +54,13 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
         }
     }
     override fun onViewClick() {
-
-        binding.imgLogo.setOnClickListener {
+    with(binding){
+        imgLogo.setOnClickListener {
             getObserver.selectImage()
 
 
         }
-        binding.btSaveTarget.setOnClickListener {
+        btSaveTarget.setOnClickListener {
             if(stat==false)
                 addTarget(
                     target.copy(
@@ -74,27 +74,27 @@ class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetLi
                 modification()
             }
         }
-        binding.etData.setOnClickListener {
-//            getLastDay( LocalDateTime.now().second+864000000)
+        etData.setOnClickListener {
+
             showCalendarDialog {
                date=it
             }
 
         }
 
-        binding.btDelete.setOnClickListener {
+        btDelete.setOnClickListener {
 
                 viewModel.deleteTarget(target)
                 findNavController().popBackStack()
 
 
         }
-        binding.btEnd.setOnClickListener {
+        btEnd.setOnClickListener {
             viewModel.modififation(target.copy(status = !target.status))
             findNavController().popBackStack()
         }
 
-
+    }
 
     }
 

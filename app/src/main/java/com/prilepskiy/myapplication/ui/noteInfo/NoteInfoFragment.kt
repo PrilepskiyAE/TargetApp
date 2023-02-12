@@ -66,26 +66,25 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
 
 
     override fun onViewClick() {
-        binding.tvLabel.setOnClickListener {
+        with(binding){
+        tvLabel.setOnClickListener {
             if (arguments == null) {
                 viewModel.addNewNote(
                     NoteModel(
                         idNote,
-                        binding.etNote.text.toString(),
-                        "",
+                        etNote.text.toString(),
                         idTagert,
                         url,
                         getData()
                     )
                 )
-                Log.d("TAG99", "add:2 ")
+
             } else {
                 Log.d("TAG99", "mod:1 ")
                 viewModel.modification(
                     NoteModel(
                         idNote,
-                        binding.etNote.text.toString(),
-                        "",
+                        etNote.text.toString(),
                         idTagert,
                         url
                     )
@@ -94,24 +93,24 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
 
             popBackStack()
         }
-        binding.btRevert.setOnClickListener { findNavController().popBackStack() }
-        binding.imgLogo2.setOnClickListener {
+        btRevert.setOnClickListener { findNavController().popBackStack() }
+        imgLogo2.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
             activityResultLauncher.launch(intent)
         }
-        binding.tvDelete.setOnClickListener {
+        tvDelete.setOnClickListener {
             viewModel.delete(
                 NoteModel(
                     idNote,
                     binding.etNote.text.toString(),
-                    "",
                     idTagert,
                     url
                 )
             )
             findNavController().popBackStack()
         }
+    }
     }
 
 

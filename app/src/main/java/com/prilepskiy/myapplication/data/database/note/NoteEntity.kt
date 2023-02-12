@@ -10,7 +10,6 @@ data class NoteEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long=0,
     val title:String="",
-    val description:String="",
     val idTarget:Long,
     val resId:String="",
     val date:String=""
@@ -20,7 +19,6 @@ data class NoteEntity(
             NoteEntity(
                 id=id,
                 title=title,
-                description=description,
                 resId=resId,
                 date=date ,
                 idTarget=idTarget
