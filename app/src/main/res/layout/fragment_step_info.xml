@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="@dimen/space_54"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,9 +24,9 @@
             android:id="@+id/btRevert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_22"
+            android:layout_marginBottom="@dimen/space_22"
             android:src="@drawable/baseline_keyboard_backspace_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_24"
-            android:text="Сохранить"
+            android:text="@string/save"
             android:textColor="#F8F3F3"
-            android:textSize="21dp"
+            android:textSize="@dimen/size_21"
             app:layout_constraintBottom_toBottomOf="@+id/btRevert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
@@ -55,16 +55,16 @@
         android:id="@+id/titleStep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Шаг:"
+        android:text="@string/step"
         android:textColor="#F8F0F0" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etStep"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_margin="5dp"
+        android:layout_height="@dimen/space_51"
+        android:layout_margin="@dimen/space_5"
         android:background="@drawable/corner_radius_edit_text"
-        android:hint="Следующий шаг"
+        android:hint="@string/next_step"
         android:padding="@dimen/view_padding_10"
         android:textColor="#ECE0E0"
         android:textColorHint="#F1EBEB"
@@ -78,28 +78,28 @@
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_margin="5dp"
-        android:background="#FFBF00" />
+        android:layout_height="@dimen/space_05"
+        android:layout_margin="@dimen/space_5"
+        android:background="@color/gold" />
 
     <TextView
         android:id="@+id/titleDescriptoin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Описание"
-        android:textColor="#E4DEDE" />
+        android:text="@string/desc"
+        android:textColor="@color/greyColor" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etDescriptor"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_margin="5dp"
+        android:layout_height="@dimen/space_84"
+        android:layout_margin="@dimen/space_5"
         android:background="@drawable/corner_radius_edit_text"
         android:gravity="start"
-        android:hint="Добавить описание"
+        android:hint="@string/add_desc"
         android:padding="@dimen/view_padding_10"
-        android:textColor="#ECE0E0"
-        android:textColorHint="#F1EBEB"
+        android:textColor="@color/greyColor"
+        android:textColorHint="@color/greyColor"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -110,14 +110,14 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_margin="5dp"
-        android:background="#FFBF00" />
+        android:layout_height="@dimen/space_05"
+        android:layout_margin="@dimen/space_5"
+        android:background="@color/gold" />
     <TextView
         android:id="@+id/tvDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/btDelete"
-        android:textColor="#FF9800" />
+        android:textColor="@color/gold" />
 </LinearLayout>

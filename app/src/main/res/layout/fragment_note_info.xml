@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="@dimen/space_54"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +22,9 @@
             android:id="@+id/btRevert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_22"
+            android:layout_marginBottom="@dimen/space_22"
             android:src="@drawable/baseline_keyboard_backspace_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_24"
             android:text="Сохранить"
-            android:textColor="#F8F3F3"
+            android:textColor="@color/greyColor"
             android:textSize="21dp"
             app:layout_constraintBottom_toBottomOf="@+id/btRevert"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,23 +52,23 @@
     <ImageView
         android:id="@+id/imgLogo2"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="@dimen/space_228"
         android:src="@drawable/baseline_photo_24" />
 
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_margin="5dp"
-        android:background="#FFBF00" />
+        android:layout_height="@dimen/space_05"
+        android:layout_margin="@dimen/space_5"
+        android:background="@color/gold" />
 
     <TextView
         android:id="@+id/tvNoteTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Имя заметки"
-        android:textColor="#E4DEDE" />
+        android:text="@string/name_note"
+        android:textColor="@color/grey" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etNote"
@@ -76,10 +76,10 @@
         android:layout_height="49dp"
         android:layout_margin="5dp"
         android:background="@drawable/corner_radius_edit_text"
-        android:hint="Имя заметки"
+        android:hint="@string/name_note"
         android:padding="@dimen/view_padding_10"
-        android:textColor="#ECE0E0"
-        android:textColorHint="#F1EBEB"
+        android:textColor="@color/greyColor"
+        android:textColorHint="@color/greyColor"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -90,9 +90,9 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_margin="5dp"
-        android:background="#FFBF00" />
+        android:layout_height="@dimen/space_05"
+        android:layout_margin="@dimen/space_5"
+        android:background="@color/gold" />
 
     <TextView
         android:id="@+id/tvDelete"
@@ -100,5 +100,5 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/btDelete"
-        android:textColor="#FF9800" />
+        android:textColor="@color/gold" />
 </LinearLayout>

@@ -29,11 +29,10 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
     val args: TargetMainFragmentArgs by navArgs()
     private var pagerAdapter: ViewPagerAdapter? = null
     private var targetCurrentTab = 0
-    var targetL:TargetModel=TargetModel(id=getUniqueId())
+    var target: TargetModel = TargetModel(id = getUniqueId())
     override fun onView() {
 
-       // ContractTarget.initData(args.ismode, args.target)
-        val target=args.target?:targetL
+        if (args.target != null) target = args.target!!
         with(binding) {
             val tabTitles: List<String> = listOf("Цель", "Шаги", "Заметки")
             if (pagerAdapter == null) {
@@ -58,7 +57,7 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
             viewPager.adapter = pagerAdapter
             viewPager.isSaveEnabled = false
             viewPager.isUserInputEnabled = false
-            pagerAdapter?.bundle=bundleOf(STAT to args.ismode, TARGETL to target )
+            pagerAdapter?.bundle = bundleOf(STAT to args.ismode, TARGETL to target)
             TabLayoutMediator(
                 tabLayout,
                 viewPager
@@ -72,6 +71,14 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
             }
         }
 
+    }
+
+    override fun onEach() {
+//        onEach(viewModel.target) {
+//            if (it != null) {
+//                target = it
+//            }
+//        }
     }
 
     override fun onResume() {
@@ -93,10 +100,12 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
         }
 
 
+
     }
-    companion object{
-        const val STAT="stat"
-        const val TARGETL="Target"
+
+    companion object {
+        const val STAT = "stat"
+        const val TARGETL = "Target"
     }
 }
 

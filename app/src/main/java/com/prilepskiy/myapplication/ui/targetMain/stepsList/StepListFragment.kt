@@ -36,7 +36,7 @@ class StepListFragment() : FragmentBaseMVVM<StepListViewModel, FragmentStepListB
             STAT to false
         )
         )
-    },{ Log.d("TAG", "onItemLongClick88:${it} ")
+    },{
         viewModel.modStatus(it)
 
     })
@@ -49,7 +49,7 @@ class StepListFragment() : FragmentBaseMVVM<StepListViewModel, FragmentStepListB
         target=arguments?.takeIf { it.containsKey(TargetMainFragment.TARGETL) }?.getParcelable<TargetModel>(
             TargetMainFragment.TARGETL
         ) as TargetModel
-        Log.d("TAG", "onCreate: $target $stat")
+
 
     }
     override fun onEach() {
@@ -81,29 +81,9 @@ class StepListFragment() : FragmentBaseMVVM<StepListViewModel, FragmentStepListB
                STAT to false))
 
         }
-//        binding.tvSaveStep.setOnClickListener {
-//            if(stat==false)
-//                target?.let { it1 -> addTarget(it1) }
-//            else{
-//                modification()
-//            }
-//        }
-    }
-    private fun modification() {
-        target?.let { it1 ->
-            viewModel.modififation(
-                it1
-            )
-        }
-        findNavController().popBackStack()
+
     }
 
-    private fun addTarget(data: TargetModel) {
-        viewModel.addNewTarget(
-            data
-        )
-        findNavController().popBackStack()
-    }
     override fun onResume() {
         super.onResume()
         viewModel.getStepByTargetList(target?.id?:0)

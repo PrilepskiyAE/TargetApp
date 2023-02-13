@@ -21,8 +21,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase: GetNoteFromTargetUseCase, private val addTargetUseCase: AddTargetUseCase,
-                                           private val updateTargetUseCase: UpdateTargetUseCase): BaseViewModel() {
+class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase: GetNoteFromTargetUseCase): BaseViewModel() {
     private val _noteList: MutableStateFlow<List<NoteModel>?> by lazy {
         MutableStateFlow(
             null
@@ -39,19 +38,5 @@ class NoteListViewModel@Inject constructor(private val getNoteFromTargetUseCase:
             }
         }
     }
-    fun addNewTarget(
-        data: TargetModel
-    ) {
-        CoroutineScope(Dispatchers.IO).launch {
-            addTargetUseCase(
-                data
-            )
-        }
-    }
 
-    fun modififation(date: TargetModel) {
-        CoroutineScope(Dispatchers.IO).launch {
-            updateTargetUseCase(date)
-        }
-    }
 }
