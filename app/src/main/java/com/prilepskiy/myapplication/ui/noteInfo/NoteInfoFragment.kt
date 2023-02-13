@@ -45,7 +45,7 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
             NoteListFragment.STAT
         ) ?: false
         Log.d("TAG", "onView: $idNote, $title $idTagert $url")
-        if (!stat) {
+        if (stat) {
             binding.etNote.setText(title)
             loadImage(binding.imgLogo2, url)
         }
@@ -84,7 +84,7 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
                         idNote,
                         etNote.text.toString(),
                         idTagert,
-                        url
+                        url,getData()
                     )
                 )
             }
