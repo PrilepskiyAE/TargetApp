@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000">
+        android:background="@color/black">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,15 +20,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+                android:layout_margin="@dimen/space_10"
+                app:cardCornerRadius="@dimen/space_10"
+                app:cardElevation="@dimen/space_10">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/space_40"
                     android:id="@+id/btAdd_note"
-                    android:background="#3F51B5">
+                    android:background="@color/blue1">
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -43,8 +43,8 @@
                         android:id="@+id/add_note"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Добавить запись"
-                        android:textColor="#CCBDBD"
+                        android:text="@string/add_note"
+                        android:textColor="@color/greyColor"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                         app:layout_constraintStart_toEndOf="@+id/imageView2"
                         app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -54,8 +54,8 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_margin="5dp"
+                android:layout_height="@dimen/space_05"
+                android:layout_margin="@dimen/space_5"
                 android:background="#FFBF00" />
 
             <androidx.recyclerview.widget.RecyclerView

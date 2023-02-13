@@ -4,26 +4,18 @@ package com.prilepskiy.myapplication.ui.targetMain.noteList
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.prilepskiy.myapplication.R
-
 import com.prilepskiy.myapplication.databinding.FragmentNoteListBinding
 import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.adapter.NoteAdapter
-import com.prilepskiy.myapplication.ui.adapter.TargetAdapter
-
 import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
-
 import com.prilepskiy.myapplication.ui.base.viewBinding
-import com.prilepskiy.myapplication.ui.main.MainFragmentDirections
 import com.prilepskiy.myapplication.ui.targetMain.TargetMainFragment
-
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -81,21 +73,7 @@ class NoteListFragment() : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListB
         }
 
     }
-    private fun modification() {
-        target?.let { it1 ->
-            viewModel.modififation(
-                it1
-            )
-        }
-        findNavController().popBackStack()
-    }
 
-    private fun addTarget(data:TargetModel) {
-        viewModel.addNewTarget(
-            data
-        )
-        findNavController().popBackStack()
-    }
     override fun onResume() {
         super.onResume()
        viewModel.getNotebyTargetList(target?.id?:0)

@@ -22,4 +22,6 @@
     <dimen name="space_30">30dp</dimen>
     <dimen name="space_40">40dp</dimen>
     <dimen name="space_05">0.5dp</dimen>
+    <dimen name="space_228">228dp</dimen>
+    <dimen name="size_21">21sp</dimen>
 </resources>

@@ -27,12 +27,12 @@ class NoteAdapter( private val click: (NoteModel) -> Unit): BaseAdapter<ViewBind
     ) : BaseViewHolder<NoteModel, ViewBinding>(binding) {
         override fun bind(item: NoteModel, context: Context) {
             with(binding) {
-            textView2.text=item.title
-                textView3.text=item.date
+            tvTitelNote.text=item.title
+                tvDeslNote.text=item.date
                 if (item.resId.equals("empty") || item.resId.isNullOrEmpty()){
-                    imageView5.setImageResource(R.drawable.baseline_photo_24)
+                    imgLogoNote.setImageResource(R.drawable.baseline_photo_24)
                 }else{
-                    loadImage(imageView5, item.resId)
+                    loadImage(imgLogoNote, item.resId)
                 }
             }
         }

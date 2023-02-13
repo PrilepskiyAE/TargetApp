@@ -10,6 +10,13 @@
     <string name="add_target">Добавить цель</string>
     <string name="btSave">Сохранить</string>
     <string name="btDelete">Удалить</string>
+    <string name="name_note">Имя заметки</string>
+    <string name="add_note">Добавить запись</string>
+    <string name="save">Сохранить</string>
+    <string name="step">Шаг:</string>
+    <string name="next_step">Следующий шаг</string>
+    <string name="desc">Описание</string>
+    <string name="add_desc">Добавить описание</string>
     <string-array name="tab_title">
         <item>Цель</item>
         <item>Шаги</item>

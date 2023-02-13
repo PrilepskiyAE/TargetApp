@@ -21,8 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StepListViewModel@Inject constructor(
-    private val getStepFromTargetUseCase: GetStepFromTargetUseCase, private val addTargetUseCase: AddTargetUseCase,
-    private val updateTargetUseCase: UpdateTargetUseCase, private val updateStepUseCase: UpdateStepUseCase,
+    private val getStepFromTargetUseCase: GetStepFromTargetUseCase,  private val updateStepUseCase: UpdateStepUseCase,
 ): BaseViewModel() {
     private val _stepList: MutableStateFlow<List<StepModel>?> by lazy {
         MutableStateFlow(
@@ -40,21 +39,7 @@ class StepListViewModel@Inject constructor(
             }
         }
     }
-    fun addNewTarget(
-        data: TargetModel
-    ) {
-        CoroutineScope(Dispatchers.IO).launch {
-            addTargetUseCase(
-                data
-            )
-        }
-    }
 
-    fun modififation(date: TargetModel) {
-        viewModelScope.launch {
-            updateTargetUseCase(date)
-        }
-    }
     fun modStatus(date: StepModel ) {
         CoroutineScope(Dispatchers.IO).launch {
             var stationItems = _stepList.value

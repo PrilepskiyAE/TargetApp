@@ -54,12 +54,12 @@ class StepAdapter(
                 when (this) {
                     is ItemStepActiveBinding -> {
 
-                       textView2.text = item.title
-                       textView3.text = item.description
+                       tvTitelNote.text = item.title
+                       tvDes.text = item.description
                     }
                     is ItemStepPasiveBinding -> {
-                        textView2.text = item.title
-                        textView3.text = item.description
+                        tvTitelNote.text = item.title
+                        tvdes.text = item.description
                     }
                 }
             }
