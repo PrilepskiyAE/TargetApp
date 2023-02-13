@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
+import androidx.core.os.bundleOf
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 
 import com.prilepskiy.myapplication.databinding.FragmentTargetMainBinding
+import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.*
 import com.prilepskiy.myapplication.ui.targetMain.noteList.NoteListFragment
 import com.prilepskiy.myapplication.ui.targetMain.stepsList.StepListFragment
@@ -27,9 +29,11 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
     val args: TargetMainFragmentArgs by navArgs()
     private var pagerAdapter: ViewPagerAdapter? = null
     private var targetCurrentTab = 0
+    var targetL:TargetModel=TargetModel(id=getUniqueId())
     override fun onView() {
 
-        ContractTarget.initData(args.ismode, args.target)
+       // ContractTarget.initData(args.ismode, args.target)
+        val target=args.target?:targetL
         with(binding) {
             val tabTitles: List<String> = listOf("Цель", "Шаги", "Заметки")
             if (pagerAdapter == null) {
@@ -54,6 +58,7 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
             viewPager.adapter = pagerAdapter
             viewPager.isSaveEnabled = false
             viewPager.isUserInputEnabled = false
+            pagerAdapter?.bundle=bundleOf(STAT to args.ismode, TARGETL to target )
             TabLayoutMediator(
                 tabLayout,
                 viewPager
@@ -88,6 +93,10 @@ class TargetMainFragment : FragmentBaseNCMVVM<TargetMainViewModel, FragmentTarge
         }
 
 
+    }
+    companion object{
+        const val STAT="stat"
+        const val TARGETL="Target"
     }
 }
 

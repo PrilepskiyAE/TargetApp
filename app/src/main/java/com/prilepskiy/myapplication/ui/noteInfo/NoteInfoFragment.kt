@@ -10,25 +10,21 @@ import androidx.navigation.fragment.findNavController
 
 import com.prilepskiy.myapplication.databinding.FragmentNoteInfoBinding
 import com.prilepskiy.myapplication.domain.model.NoteModel
-import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.*
-
-import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
 import com.prilepskiy.myapplication.ui.targetMain.noteList.NoteListFragment
-
+import com.prilepskiy.myapplication.ui.targetMain.stepsList.StepListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoBinding>() {
     override val binding: FragmentNoteInfoBinding by viewBinding()
     override val viewModel: NoteInfoViewModel by viewModels()
-    private var target: TargetModel? = ContractTarget.getDataTarget()
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private var url: String = "empty"
     private var idNote: Long = 0
     private var title: String = ""
     private var idTagert: Long = 0
-
+    private var stat:Boolean=true
 
     // val args:NoteInfoFragmentArgs by navArgs()
     override fun onView() {
@@ -41,13 +37,15 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
         ) ?: ""
         idTagert = arguments?.takeIf { it.containsKey(NoteListFragment.IDTARGET) }?.getLong(
             NoteListFragment.IDTARGET
-        ) ?: target?.id ?: 0
+        )!!
         url = arguments?.takeIf { it.containsKey(NoteListFragment.RESID) }?.getString(
             NoteListFragment.RESID
         ) ?: "empty"
-
+        stat=arguments?.takeIf { it.containsKey(NoteListFragment.STAT) }?.getBoolean(
+            NoteListFragment.STAT
+        ) ?: false
         Log.d("TAG", "onView: $idNote, $title $idTagert $url")
-        if (arguments != null) {
+        if (!stat) {
             binding.etNote.setText(title)
             loadImage(binding.imgLogo2, url)
         }
@@ -68,7 +66,7 @@ class NoteInfoFragment : FragmentBaseNCMVVM<NoteInfoViewModel, FragmentNoteInfoB
     override fun onViewClick() {
         with(binding){
         tvLabel.setOnClickListener {
-            if (arguments == null) {
+            if (!stat) {
                 viewModel.addNewNote(
                     NoteModel(
                         idNote,

@@ -14,8 +14,7 @@ import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.FragmentBaseNCMVVM
 import com.prilepskiy.myapplication.ui.base.getUniqueId
 import com.prilepskiy.myapplication.ui.base.viewBinding
-import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
-import com.prilepskiy.myapplication.ui.targetMain.noteList.NoteListFragment
+
 import com.prilepskiy.myapplication.ui.targetMain.stepsList.StepListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,11 +23,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoBinding>() {
     override val binding: FragmentStepInfoBinding by viewBinding()
     override val viewModel: StepInfoViewModel by viewModels()
-    private var target: TargetModel? = ContractTarget.getDataTarget()
+   // private var target: TargetModel? = ContractTarget.getDataTarget()
     private var idStep: Long = 0
     private var title: String = ""
     private var descriptor: String = ""
     private var idTagert: Long = 0
+    private var stat:Boolean=true
 
     override fun onView() {
         idStep = arguments?.takeIf { it.containsKey(StepListFragment.ID) }?.getLong(
@@ -39,10 +39,13 @@ class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoB
         ) ?: ""
         idTagert = arguments?.takeIf { it.containsKey(StepListFragment.IDTARGET) }?.getLong(
             StepListFragment.IDTARGET
-        ) ?: target?.id ?: 0
+        )!!
         descriptor = arguments?.takeIf { it.containsKey(StepListFragment.DESC) }?.getString(
             StepListFragment.DESC
         ) ?: ""
+        stat=arguments?.takeIf { it.containsKey(StepListFragment.STAT) }?.getBoolean(
+            StepListFragment.STAT
+        ) ?: false
         binding.etStep.setText(title)
         binding.etDescriptor.setText(descriptor)
     }
@@ -50,7 +53,7 @@ class StepInfoFragment : FragmentBaseNCMVVM<StepInfoViewModel, FragmentStepInfoB
     override fun onViewClick() {
         with(binding) {
             tvLabel.setOnClickListener {
-                if (arguments == null) {
+                if (!stat) {
                     viewModel.addStep(
                         StepModel(
                             idStep,

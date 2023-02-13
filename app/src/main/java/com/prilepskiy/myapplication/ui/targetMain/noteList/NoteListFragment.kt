@@ -1,10 +1,12 @@
 package com.prilepskiy.myapplication.ui.targetMain.noteList
 
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -20,25 +22,37 @@ import com.prilepskiy.myapplication.ui.base.FragmentBaseMVVM
 
 import com.prilepskiy.myapplication.ui.base.viewBinding
 import com.prilepskiy.myapplication.ui.main.MainFragmentDirections
-import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
+import com.prilepskiy.myapplication.ui.targetMain.TargetMainFragment
 
 import dagger.hilt.android.AndroidEntryPoint
 
 
 
 @AndroidEntryPoint
-class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBinding>() {
+class NoteListFragment() : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBinding>() {
     override val binding: FragmentNoteListBinding by viewBinding()
     override val viewModel:NoteListViewModel by viewModels()
-    private var target: TargetModel? = ContractTarget.getDataTarget()
-    private val stat:Boolean?=ContractTarget.getDataStat()
+    private var stat:Boolean=false
+    private var target:TargetModel=TargetModel()
     val nAdapter= NoteAdapter { it ->
          findNavController().navigate(R.id.noteInfoFragment, bundleOf(
              ID to  it.id,
              TITLE to it.title,
              RESID to it.resId,
              IDTARGET to it.idTarget,
+             STAT to true
              ))
+
+    }
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        stat=arguments?.takeIf { it.containsKey(TargetMainFragment.STAT) }
+            ?.getBoolean(TargetMainFragment.STAT) ?:false
+        target=arguments?.takeIf { it.containsKey(TargetMainFragment.TARGETL) }?.getParcelable<TargetModel>(
+            TargetMainFragment.TARGETL
+        ) as TargetModel
+        Log.d("TAG", "onCreate: $target $stat")
 
     }
     override fun onEach() {
@@ -62,15 +76,10 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
 
     override fun onViewClick() {
         binding.btAddNote.setOnClickListener {
-            findNavController().navigate(R.id.noteInfoFragment)
+            findNavController().navigate(R.id.noteInfoFragment, bundleOf(IDTARGET to target.id,
+                STAT to false))
         }
-        binding.tvSaveNote.setOnClickListener {
-            if(stat==false)
-                target?.let { it1 -> addTarget(it1) }
-            else{
-                modification()
-            }
-        }
+
     }
     private fun modification() {
         target?.let { it1 ->
@@ -97,5 +106,6 @@ class NoteListFragment : FragmentBaseMVVM<NoteListViewModel, FragmentNoteListBin
         const val TITLE =   "noteTitle"
         const val RESID = "noteResId"
         const val IDTARGET="noteidTarget"
+        const val STAT="stat"
     }
 }
