@@ -1,10 +1,13 @@
 package com.prilepskiy.myapplication.ui.targetMain.targetList
 
+import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -12,25 +15,34 @@ import androidx.navigation.fragment.findNavController
 import com.prilepskiy.myapplication.databinding.FragmentTargetListBinding
 import com.prilepskiy.myapplication.domain.model.TargetModel
 import com.prilepskiy.myapplication.ui.base.*
+import com.prilepskiy.myapplication.ui.targetMain.TargetMainFragment.Companion.STAT
+import com.prilepskiy.myapplication.ui.targetMain.TargetMainFragment.Companion.TARGETL
 
-import com.prilepskiy.myapplication.ui.targetMain.ContractTarget
+
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDateTime
 
 
 @AndroidEntryPoint
-class TargetListFragment: FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
+class TargetListFragment(): FragmentBaseMVVM<TargetListViewModel, FragmentTargetListBinding>() {
     override val binding: FragmentTargetListBinding by viewBinding()
     override val viewModel: TargetListViewModel by viewModels()
     private  var url:String="empty"
     private  var date:String=""
-
-    private val stat:Boolean?=ContractTarget.getDataStat()
-
-    private var target: TargetModel=ContractTarget.getDataTarget()?:ContractTarget.setDataTarget(TargetModel(id=getUniqueId()))
+    private var stat:Boolean=false
+    private var target:TargetModel=TargetModel()
     private lateinit var getObserver : GetContentLifecycleObserver
 
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        stat=arguments?.takeIf { it.containsKey(STAT) }
+            ?.getBoolean(STAT) ?:false
+        target=arguments?.takeIf { it.containsKey(TARGETL) }?.getParcelable<TargetModel>(TARGETL) as TargetModel
+        Log.d("TAG", "onCreate: $target $stat")
+
+    }
 
     override fun onView() {
         with(binding){
