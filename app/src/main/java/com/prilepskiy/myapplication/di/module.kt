@@ -23,7 +23,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
 @InstallIn(ViewModelComponent::class)
-class MessageDBModule {
+class DBModule {
     @Provides
     fun provideDB(@ApplicationContext context: Context): TargetDataBase = Room.databaseBuilder(
         context,
